@@ -1,7 +1,7 @@
 FLAGS = -Wall -pedantic -std=c++17
 
 ./app : main.o tablica.o tablica_wysw.o menu.o 
-	g++ -o app main.o tablica.o tablica_wysw.cpp menu.o
+	g++ -o app.out main.o tablica.o tablica_wysw.cpp menu.o
 
 main.o : main.cpp
 	g++ -c ${FLAGS} -o main.o main.cpp
