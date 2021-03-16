@@ -1,10 +1,67 @@
 #include <iostream>
+//#include <format>
+#include <cstdlib>
+
 #include "menu.h"
+#include "tablica.h"
 
 using namespace std;
-
 void generujMenu(){
-	cout << "1. Wypisz arkusz\n";
-	cout << "2. Wprowadz element\n";
-	cout << "3. Usun element\n";
+    string elementy[] = { "Wypisz arkusz", "Modyfikuj element", "Zmień rozmiar", "Utwórz nowy arkusz", "Wyjdź z programu"};
+    int i{};
+    for(auto x: elementy){
+        //cout << format("{}. {}\n", ++i, x);
+        cout << ++i << ". " << x << endl;
+    }
+    cout << "Wprowadź wybór: ";
+}
+void obslugaMenu(){
+    int opcja{};
+    int rozmiarX, rozmiarY;
+    int ** tablica = tworzArkusz(&rozmiarX, &rozmiarY);
+    while(true){
+        generujMenu();
+        cin >> opcja;
+        switch(opcja){
+            case 1:{
+                       wyswietlTablica(tablica, rozmiarX, rozmiarY);
+                       break;
+                   }
+            case 2: {
+                        wprowadzWartosc(tablica);
+                     
+                        break;
+                    }
+            case 3: {
+                        rozszerzArkusz(&tablica, &rozmiarX, &rozmiarY);
+                        break;
+                    }
+            case 4: {
+                        tablica = tworzArkusz(&rozmiarX, &rozmiarY);
+                        break;
+                    }
+            case 5: {
+                        exit(0);
+                    }
+        }
+    }
+}
+
+int ** tworzArkusz(int * rozmiarX, int * rozmiarY ){
+    cout << "Wprowadź ilość kolumn tablicy: ";
+    cin >> *rozmiarY;
+    cout << "Wprowadź ilość wierszy tablicy:";
+    cin >> *rozmiarX;
+
+    return tworzTablica(rozmiarX, rozmiarY);
+}
+void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY){
+    cout << (*tablica)[0][0];
+    int nowyX, nowyY;
+    cout << "Wprowadź ilość wierszy tablicy: ";    
+    cin >> nowyX;
+    cout << "Wprowadź ilość kolumn tablicy: ";
+    cin >> nowyY;
+
+    rozszerzTablice(tablica, rozmiarX, rozmiarY, nowyX, nowyY);
 }
