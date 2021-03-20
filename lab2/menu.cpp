@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <format>
 #include <cstdlib>
 
 #include "menu.h"
@@ -10,7 +9,6 @@ void generujMenu(){
     string elementy[] = { "Wypisz arkusz", "Modyfikuj element", "Zmień rozmiar", "Utwórz nowy arkusz", "Wyjdź z programu"};
     int i{};
     for(auto x: elementy){
-        //cout << format("{}. {}\n", ++i, x);
         cout << ++i << ". " << x << endl;
     }
     cout << "Wprowadź wybór: ";
@@ -28,7 +26,7 @@ void obslugaMenu(){
                        break;
                    }
             case 2: {
-                        wprowadzWartosc(tablica);
+                        wprowadzWartosc(tablica, rozmiarX, rozmiarY);
                      
                         break;
                     }

@@ -11,7 +11,7 @@ void wyswietlTablica(int ** tablica, int rozX, int rozY){
 	}
 }
 
-void wprowadzWartosc(int ** tablica){
+void wprowadzWartosc(int ** tablica, int rozX, int rozY){
     int wspX, wspY, wart;
     cout << "Wprowadź której kolumny: ";
     cin >> wspX;

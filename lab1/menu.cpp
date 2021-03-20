@@ -56,7 +56,6 @@ int ** tworzArkusz(int * rozmiarX, int * rozmiarY ){
     return tworzTablica(rozmiarX, rozmiarY);
 }
 void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY){
-    cout << (*tablica)[0][0];
     int nowyX, nowyY;
     cout << "Wprowadź ilość wierszy tablicy: ";    
     cin >> nowyX;
