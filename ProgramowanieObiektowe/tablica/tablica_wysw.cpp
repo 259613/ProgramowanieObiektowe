@@ -1,7 +1,8 @@
 /// @file
 
 #include <iostream>
-#include "tablica.h"
+#include "tablica.hpp"
+
 using namespace std;
 
 void wyswietlTablica(int ** tablica, int rozX, int rozY){

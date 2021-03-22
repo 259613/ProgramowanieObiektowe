@@ -3,8 +3,8 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "menu.h"
-#include "tablica.h"
+#include "menu.hpp"
+#include "../tablica/tablica.hpp"
 
 using namespace std;
 void generujMenu(){
