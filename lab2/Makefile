@@ -16,3 +16,6 @@ tablica.o : tablica.cpp
 
 menu.o : menu.cpp
 	g++ -c ${FLAGS} -o $@ $^
+clean	:  
+	echo "Czyszczenie katalogu"
+	rm -rf latex html *.o *.pdf $@

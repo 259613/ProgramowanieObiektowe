@@ -1,3 +1,5 @@
+/// @file
+
 #include <iostream>
 #include "tablica.h"
 #include "menu.h"

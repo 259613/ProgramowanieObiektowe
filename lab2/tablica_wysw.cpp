@@ -1,11 +1,13 @@
+/// @file
+
 #include <iostream>
 #include "tablica.h"
 using namespace std;
 
 void wyswietlTablica(int ** tablica, int rozX, int rozY){
-	for(int i = 0; i < rozX; i++){
-		for(int j = 0; j < rozY; j++){
-			cout << tablica[j][i] << '\t';
+	for(int y = 0; y < rozY; y++){
+		for(int x = 0; x < rozX; x++){
+			cout << tablica[y][x] << '\t';
 		}
 		cout << endl;
 	}

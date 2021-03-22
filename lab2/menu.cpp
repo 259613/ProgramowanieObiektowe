@@ -1,3 +1,5 @@
+/// @file
+
 #include <iostream>
 #include <cstdlib>
 
@@ -47,17 +49,17 @@ void obslugaMenu(){
 
 int ** tworzArkusz(int * rozmiarX, int * rozmiarY ){
     cout << "Wprowadź ilość kolumn tablicy: ";
-    cin >> *rozmiarY;
-    cout << "Wprowadź ilość wierszy tablicy:";
     cin >> *rozmiarX;
+    cout << "Wprowadź ilość wierszy tablicy: ";
+    cin >> *rozmiarY;
 
     return tworzTablica(rozmiarX, rozmiarY);
 }
 void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY){
     int nowyX, nowyY;
-    cout << "Wprowadź ilość wierszy tablicy: ";    
-    cin >> nowyX;
     cout << "Wprowadź ilość kolumn tablicy: ";
+    cin >> nowyX;
+    cout << "Wprowadź ilość wierszy tablicy: ";
     cin >> nowyY;
 
     rozszerzTablice(tablica, rozmiarX, rozmiarY, nowyX, nowyY);
