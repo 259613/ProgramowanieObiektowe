@@ -5,10 +5,11 @@
 
 #include "menu.hpp"
 #include "../tablica/tablica.hpp"
+#include "../io/zapisOdczyt.hpp"
 
 using namespace std;
 void generujMenu(){
-    string elementy[] = { "Wypisz arkusz", "Modyfikuj element", "Zmień rozmiar", "Utwórz nowy arkusz", "Wyjdź z programu"};
+    string elementy[] = { "Wypisz arkusz", "Modyfikuj element", "Zmień rozmiar", "Utwórz nowy arkusz", "Zapisz arkusz", "Wczytaj arkusz", "Wyjdź z programu"};
     int i{};
     for(auto x: elementy){
         cout << ++i << ". " << x << endl;
@@ -41,6 +42,18 @@ void obslugaMenu(){
                         break;
                     }
             case 5: {
+                        string plik;
+                        getline(cin, plik);
+                        zapisPliku(tablica, rozmiarX, rozmiarY, plik);
+                        break;
+                    }
+            case 6: {
+                        string plik;
+                        getline(cin, plik);
+                        tablica = wczytajPlik(&rozmiarX, &rozmiarY, plik);
+                        break;
+                    }
+            case 7: {
                         exit(0);
                     }
         }

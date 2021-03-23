@@ -32,7 +32,10 @@
 *.app
 app
 
-# PDF compilation catalog
+# Doxygen generated files 
 latex
 html
+
+# Spreadsheet csv saves
+*.csv
 
