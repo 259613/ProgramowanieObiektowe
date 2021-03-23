@@ -42,12 +42,14 @@ void obslugaMenu(){
                         break;
                     }
             case 5: {
+                        czyscBufor();
                         string plik;
                         getline(cin, plik);
                         zapisPliku(tablica, rozmiarX, rozmiarY, plik);
                         break;
                     }
             case 6: {
+                        czyscBufor();
                         string plik;
                         getline(cin, plik);
                         tablica = wczytajPlik(&rozmiarX, &rozmiarY, plik);
@@ -76,4 +78,9 @@ void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY){
     cin >> nowyY;
 
     rozszerzTablice(tablica, rozmiarX, rozmiarY, nowyX, nowyY);
+}
+
+void czyscBufor(){
+    cin.ignore(1000,'\n');
+    cin.clear();
 }

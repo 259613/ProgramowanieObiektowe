@@ -40,4 +40,9 @@ int ** tworzArkusz(int* rozmiarX,int* rozmiarY);
  */
 void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY);
 
+/** \brief Funkcja od czyszczenia buforu strumienia CIN
+ *
+ * Funkcja ma za zadanie wyczyścić bufor strumienia wejściowego CIN celem wprowadzenia np. string'a
+ */
+void czyscBufor();
 #endif
