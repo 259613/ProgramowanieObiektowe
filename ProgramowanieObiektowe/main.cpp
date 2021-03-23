@@ -1,8 +1,8 @@
 /// @file
 
-#include "menu/menu.hpp"
+#include "cursesUI/menu.hpp"
 
 
 int main(){
-	obslugaMenu();
+	CursesMenu::obslugaMenu();
 }

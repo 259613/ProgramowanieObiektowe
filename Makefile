@@ -1,8 +1,8 @@
 FLAGS = -Wall -pedantic -std=c++20 -lncurses
 CATALOG = ./ProgramowanieObiektowe
 
-app.out : main.o tablica.o tablica_wysw.o menu.o 
-	g++ -o $@ $^
+app.out : main.o tablica.o tablica_wysw.o menu.o menuCurses.o WyswietlaczArkusz.o
+	g++ -lncurses -o $@ $^
 	doxygen config
 	make -C latex/ -f Makefile
 	cp latex/refman.pdf dokumentacja.pdf 
@@ -14,6 +14,10 @@ tablica_wysw.o : ${CATALOG}/tablica/tablica_wysw.cpp
 tablica.o : ${CATALOG}/tablica/tablica.cpp
 	g++ -c ${FLAGS} -o $@ $^
 menu.o : ${CATALOG}/menu/menu.cpp
+	g++ -c ${FLAGS} -o $@ $^
+WyswietlaczArkusz.o : ${CATALOG}/cursesUI/WyswietlaczArkusz.cpp
+	g++ -c ${FLAGS} -o $@ $^
+menuCurses.o : ${CATALOG}/cursesUI/menu.cpp
 	g++ -c ${FLAGS} -o $@ $^
 clean	:  
 	echo "Czyszczenie katalogu"
