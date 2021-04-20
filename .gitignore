@@ -38,4 +38,4 @@ html
 
 # Spreadsheet csv saves
 *.csv
-
+*.ccls
