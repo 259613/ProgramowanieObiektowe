@@ -2,6 +2,8 @@
 #define HEADER_GUARD
 /// @file
 
+
+
 /** 
  * \brief Funkcja kontrolująca działanie programu.
  * 
@@ -40,20 +42,14 @@ int ** tworzArkusz(int* rozmiarX,int* rozmiarY);
  */
 void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY);
 
-/** \brief Funkcja od czyszczenia buforu strumienia CIN
- *
- * Funkcja ma za zadanie wyczyścić bufor strumienia wejściowego CIN celem wprowadzenia np. string'a
- */
-void czyscBufor();
-
 /** \brief Funkcja wczytywania tablicy
  * Funkcja menu od wczytywania tablicy, ma za zadanie opakowanie funkcji IO wczytajPlik
  * @param [out] rozmiarX szerokość tablicy wczytanej
  * @param [out] rozmiarY wysokość tablicy wczytanej
- * @return Tablica do wykorzystania w arkuszu
+ * @param [in,out] tablica tablica do której mogą być wczytane elementy
  * 
  */
-int ** wczytanie(int * rozmiarX, int * rozmiarY);
+void wczytanie(int *** tablica, int * rozmiarX, int * rozmiarY);
 
 /** \brief Funkcja menu od zapisu
  * 
@@ -64,6 +60,8 @@ int ** wczytanie(int * rozmiarX, int * rozmiarY);
  * @param [in] rozmiarY wysokość zczytywanego arkusza 
  */
 void zapis(int ** tablica, int rozmiarX, int rozmiarY);
+
+
 
 
 

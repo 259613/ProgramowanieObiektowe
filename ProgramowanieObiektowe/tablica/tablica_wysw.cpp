@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "tablica.hpp"
+#include "../utility/utility.hpp"
 
 using namespace std;
 
@@ -17,11 +18,11 @@ void wyswietlTablica(int ** tablica, int rozX, int rozY){
 void wprowadzWartosc(int ** tablica, int rozX, int rozY){
     int wspX, wspY, wart;
     cout << "Wprowadź której kolumny: ";
-    cin >> wspX;
+    wspX = wprowadzZakres(0, rozX-1);
     cout << "Wprowadź który wiersz: ";
-    cin >> wspY;
+    wspY = wprowadzZakres(0, rozY-1);
     cout << "Podaj wartość: ";
-    cin >> wart; 
+    wart = wprowadzInt(); 
     modyfikacjaWartosci(tablica, wspX, wspY, wart);
     cout << "ZMODYFIKOWANO!\n";
 }
