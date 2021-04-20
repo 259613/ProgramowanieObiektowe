@@ -6,7 +6,7 @@ int wprowadzInt(){
 	int x;
 	cin >> x;
 	while (!cin){
-	    czyscBufor();
+	  czyscBufor();
 		cin >> x;	
 	}
 	return x;
@@ -30,6 +30,6 @@ int wprowadzZakres(int min, int max){
 }
 
 void czyscBufor(){
-    cin.ignore(1000,'\n');
     cin.clear();
+    cin.ignore(1000,'\n');
 }

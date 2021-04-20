@@ -74,6 +74,10 @@ void wczytanie(int*** tablica, int *rozmiarX, int *rozmiarY){
                    cout << "Niepoprawny format wczytywanego pliku!\n";
                    break;
                }
+        case 3:{
+                   cout << "Niepoprawny rozmiar wczytywanego arkusza!\n";
+                   break;
+               }
     }
 }
 

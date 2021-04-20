@@ -7,12 +7,13 @@
 using namespace std;
 
 void wyswietlTablica(int ** tablica, int rozX, int rozY){
-	for(int y = 0; y < rozY; y++){
-		for(int x = 0; x < rozX; x++){
-			cout << tablica[y][x] << '\t';
-		}
-		cout << endl;
-	}
+    cout << "Tablica o rozmiarze " << rozX << " : " << rozY << endl;
+    for(int y = 0; y < rozY; y++){
+		    for(int x = 0; x < rozX; x++){
+			      cout << tablica[y][x] << '\t';
+		    }
+		    cout << endl;
+	  }
 }
 
 void wprowadzWartosc(int ** tablica, int rozX, int rozY){
@@ -24,5 +25,4 @@ void wprowadzWartosc(int ** tablica, int rozX, int rozY){
     cout << "Podaj wartość: ";
     wart = wprowadzInt(); 
     modyfikacjaWartosci(tablica, wspX, wspY, wart);
-    cout << "ZMODYFIKOWANO!\n";
 }

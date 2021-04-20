@@ -17,6 +17,6 @@ int zapisPliku(int ** tablica, int rozmiarX, int rozmiarY, std::string nazwa);
  * @param [out] rozmiarX Do tej zmiennej będzie wprowadzona szerokość tablicy
  * @param [out] rozmiarY Do tej zmiennej będzie wprowadzona wysokość tablicy
  * @param [in] nazwa Nazwa wczytywanego pliku
- * @return Zwraca stan funkcji "0 - Funkcja wykonana", "1 - Niepoprawna nazwa pliku", "2 - Niepoprawny format"
+ * @return Zwraca stan funkcji "0 - Funkcja wykonana", "1 - Niepoprawna nazwa pliku", "2 - Niepoprawny format" , "3 - Niepoprawny rozmiar"
  */
 int wczytajPlik(int*** tablica,int * rozmiarX, int * rozmiarY, std::string nazwa);

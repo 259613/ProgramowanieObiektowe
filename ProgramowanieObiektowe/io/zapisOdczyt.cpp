@@ -33,8 +33,17 @@ int zapisPliku(int ** tablica, int rozmiarX, int rozmiarY, string nazwa){
 int wczytajPlik(int*** tablica, int * rozmiarX, int * rozmiarY, string nazwa){
     ifstream plik(nazwa);
     if(plik.good()){
-        plik >> *rozmiarY;
-        plik >> *rozmiarX;
+        int rozmiarWczytY{}, rozmiarWczytX{};
+        plik >> rozmiarWczytY;
+        plik >> rozmiarWczytX;
+        
+        if(rozmiarWczytX < 1 || rozmiarWczytY < 1){
+            return 3;
+        }
+
+        *rozmiarX = rozmiarWczytX;
+        *rozmiarY = rozmiarWczytY;
+
         *tablica = tworzTablica(rozmiarX, rozmiarY); 
         for(int y = 0; y < *rozmiarY; y++){
             for(int x = 0; x < (*rozmiarX) - 1; x++){
