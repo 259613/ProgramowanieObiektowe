@@ -33,7 +33,7 @@ void obslugaMenu(){
                      
                         break;
                     }
-            case 3: {
+                    case 3: {
                         rozszerzArkusz(&tablica, &rozmiarX, &rozmiarY);
                         break;
                     }
@@ -42,23 +42,50 @@ void obslugaMenu(){
                         break;
                     }
             case 5: {
-                        czyscBufor();
-                        string plik;
-                        getline(cin, plik);
-                        zapisPliku(tablica, rozmiarX, rozmiarY, plik);
+                        zapis(tablica, rozmiarX, rozmiarY);
                         break;
                     }
             case 6: {
-                        czyscBufor();
-                        string plik;
-                        getline(cin, plik);
-                        tablica = wczytajPlik(&rozmiarX, &rozmiarY, plik);
+                        tablica = wczytanie(&rozmiarX, &rozmiarY);
                         break;
                     }
             case 7: {
                         exit(0);
                     }
         }
+    }
+}
+
+int ** wczytanie(int *rozmiarX, int *rozmiarY){
+    czyscBufor();
+    string plik;
+    int ** tablica;
+    getline(cin, plik);
+    switch(wczytajPlik(&tablica, rozmiarX, rozmiarY, plik)){
+        case 1:{
+                   cout << "Brak dostępu do pliku bądź niepoprawna nazwa!\n";
+                   return nullptr;
+                   break;
+               }
+        case 2:{
+                   cout << "Niepoprawny format wczytywanego pliku!\n";
+                   return nullptr;
+                   break;
+               }
+    }
+    return tablica;
+}
+
+
+void zapis(int **tablica, int rozmiarX, int rozmiarY){
+    czyscBufor(); 
+    string plik;
+    getline(cin, plik);
+    switch(zapisPliku(tablica, rozmiarX, rozmiarY, plik)){
+        case 1:{
+                   cout << "Wystąpił błąd zapisu!\n Brak dostępu do pliku bądź niepoprawna nazwa\n";
+                   break;
+               }
     }
 }
 
