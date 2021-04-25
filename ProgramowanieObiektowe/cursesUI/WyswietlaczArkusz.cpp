@@ -1,8 +1,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <ncurses.h>
+#include <string>
+#include <sstream>
 
 #include "WyswietlaczArkusz.hpp"
+#include "../tablica/tablica.hpp"
 
 namespace CursesMenu
 {
@@ -24,7 +27,6 @@ namespace CursesMenu
             {
 
             move(3+(i*2), 3+(j*8));
-            int kolor = 1;
             if(y==i && x == j){
                 addstr("> ");
                 attron(COLOR_PAIR(2));
@@ -48,8 +50,9 @@ namespace CursesMenu
         curs_set(0);
         while (true)
         {
+            int x = 0;
             wyswietlArkusz(selektorX, selektorY);
-            switch (getch())
+            switch (x = getch())
             {
             case 65:
                 if (selektorY > 0)
@@ -70,8 +73,39 @@ namespace CursesMenu
                 }
                 break;
                 
-            case 10:
-                curs_set(1);
+            case 10:{
+
+                    curs_set(1);
+                    int liczba;
+                    while(true){
+                        clear();
+                        addstr("Podaj wartość: ");
+                        
+                        char wartosc[9]{};
+                        getnstr(wartosc,8);
+                        std::stringstream nietypowyKonwertor;
+                        nietypowyKonwertor << wartosc;
+                        nietypowyKonwertor >> liczba;
+                        if(!nietypowyKonwertor.fail()){
+                            break;
+                        }
+                        refresh();
+                    }
+                    
+                    modyfikacjaWartosci(tablica, selektorX, selektorY, liczba);
+                    curs_set(0);
+                }
+                break;
+            case 81:
+                [[fallthrough]]
+            case 81+32:
+                {
+                    clear();
+                    refresh();
+                    endwin();
+                    exit(0);
+                }
+                break;
             default:
                 break;
             }
