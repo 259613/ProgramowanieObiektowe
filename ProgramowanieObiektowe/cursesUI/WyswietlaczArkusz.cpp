@@ -4,8 +4,10 @@
 #include <string>
 #include <sstream>
 
+
 #include "WyswietlaczArkusz.hpp"
 #include "../tablica/tablica.hpp"
+#include "../utility/utility.hpp"
 
 namespace CursesMenu
 {
@@ -77,23 +79,19 @@ namespace CursesMenu
 
                     curs_set(1);
                     int liczba;
-                    while(true){
-                        clear();
-                        addstr("Podaj wartość: ");
-                        
-                        char wartosc[9]{};
-                        getnstr(wartosc,8);
-                        std::stringstream nietypowyKonwertor;
-                        nietypowyKonwertor << wartosc;
-                        nietypowyKonwertor >> liczba;
-                        if(!nietypowyKonwertor.fail()){
-                            break;
-                        }
-                        refresh();
-                    }
+                   
+                    clear();
+                    refresh();
+                    endwin();
+                    std::cout << "Podaj wartość: ";
+
                     
+                    liczba = wprowadzInt();
                     modyfikacjaWartosci(tablica, selektorX, selektorY, liczba);
+
+                    initscr();
                     curs_set(0);
+
                 }
                 break;
             case 81:

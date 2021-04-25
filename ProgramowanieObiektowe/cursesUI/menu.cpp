@@ -11,6 +11,7 @@ using namespace std;
 namespace CursesMenu
 {
     void obslugaMenu(){
+        system("clear");
         int opcja{};
         int rozmiarX, rozmiarY;
         int **tablica = tworzArkusz(&rozmiarX, &rozmiarY);
