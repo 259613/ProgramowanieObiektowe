@@ -2,6 +2,8 @@
 #define HEADER_GUARD
 /// @file
 
+
+
 /** 
  * \brief Funkcja kontrolująca działanie programu.
  * 
@@ -23,8 +25,8 @@ void generujMenu();
  * Funkcja zawierająca interfejs umożliwiający tworzenie nowej tablicy dwuwymiarowej
  * zwraca wskaźnik na wskaźnik typu int.
  * 
- * @param rozmiarX [out] wartość nowej szerokości tablicy
- * @param rozmiarY [out] wartość nowej wysokości tablicy
+ * @param[out] rozmiarX wartość nowej szerokości tablicy
+ * @param[out] rozmiarY wartość nowej wysokości tablicy
  * @return Tablicę do do wykorzystania w arkuszu
  */
 int ** tworzArkusz(int* rozmiarX,int* rozmiarY);
@@ -34,10 +36,34 @@ int ** tworzArkusz(int* rozmiarX,int* rozmiarY);
  * 
  * Interfejs umożliwiający rozszerzanie istniejącego arkusza.
  * 
- * @param tablica [in,out] wskaźnik na poprzednią tablicę arkusza
- * @param rozmiarX [in,out] parametr zawiera szerokość modyfikowanego arkusza, parametr jest modyfikowany zawierając nową szerokość
- * @param rozmiarY [in,out] parametr zawiera wysokość modyfikowanego arkusza, parametr jest modyfikowany zawierając nową wysokość
+ * @param[in,out] tablica wskaźnik na poprzednią tablicę arkusza
+ * @param[in,out] rozmiarX parametr zawiera szerokość modyfikowanego arkusza, parametr jest modyfikowany zawierając nową szerokość
+ * @param[in,out] rozmiarY parametr zawiera wysokość modyfikowanego arkusza, parametr jest modyfikowany zawierając nową wysokość
  */
 void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY);
+
+/** \brief Funkcja wczytywania tablicy
+ * Funkcja menu od wczytywania tablicy, ma za zadanie opakowanie funkcji IO wczytajPlik
+ * @param [out] rozmiarX szerokość tablicy wczytanej
+ * @param [out] rozmiarY wysokość tablicy wczytanej
+ * @param [in,out] tablica tablica do której mogą być wczytane elementy
+ * 
+ */
+void wczytanie(int *** tablica, int * rozmiarX, int * rozmiarY);
+
+/** \brief Funkcja menu od zapisu
+ * 
+ * Funkcja menu od zapisu która ma za zadanie przetworzenie i opakowanie funkcji IO zapisPliku
+ *
+ * @param [in] tablica przekazywana jest tablica do odczytu w zapisie do pliku
+ * @param [in] rozmiarX szerokość zczytywanego arkusza
+ * @param [in] rozmiarY wysokość zczytywanego arkusza 
+ */
+void zapis(int ** tablica, int rozmiarX, int rozmiarY);
+
+
+
+
+
 
 #endif

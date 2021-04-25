@@ -32,11 +32,13 @@
 *.app
 app
 
-# PDF compilation catalog
+# Doxygen generated files 
 latex
 html
 
 # Editor
 .vscode
 .ccls
-plik.csv
+
+# Spreadsheet csv saves
+*.csv
