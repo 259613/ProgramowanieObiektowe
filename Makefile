@@ -1,7 +1,7 @@
 FLAGS = -Wall -pedantic -std=c++20 -lncurses
 CATALOG = ./ProgramowanieObiektowe
 
-app.out : main.o tablica.o tablica_wysw.o menu.o zapisOdczyt.o utility.o
+app.out : main.o tablica.o tablica_wysw.o menu.o zapisOdczyt.o utility.o operacje.o
 	g++ -o $@ $^
 	doxygen config
 	make -C latex/ -f Makefile
@@ -18,6 +18,8 @@ menu.o : ${CATALOG}/menu/menu.cpp
 zapisOdczyt.o : ${CATALOG}/io/zapisOdczyt.cpp
 	g++ -c ${FLAGS} -o $@ $^
 utility.o : ${CATALOG}/utility/utility.cpp
+	g++ -c ${FLAGS} -o $@ $^
+operacje.o : ${CATALOG}/operacje/operacje.cpp
 	g++ -c ${FLAGS} -o $@ $^
 clean	:  
 	echo "Czyszczenie katalogu"

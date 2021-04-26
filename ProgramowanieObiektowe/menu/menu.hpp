@@ -3,7 +3,7 @@
 
 /// @file
 #include "../tablica/tablica.hpp"
-
+#include <string>
 
 
 /** 
@@ -55,5 +55,32 @@ void wczytanie(Arkusz * arkusz);
 void zapis(Arkusz arkusz);
 
 
+/** \brief Funkcja menu od wyboru wgzględem czego wyznazcza parametry
+ * 
+ * Funkcja menu od wyboru atrybutu tablicy (kolumny lub wiersza)
+ * która ma za wyświetlenie parametrów wybranego atrybutu.
+ *
+ * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji wyboru parametrów
+ */
+void parametry(Arkusz arkusz);
+
+
+/** \brief Funkcja od wyznaczania parametrów wiersza arkusza
+ * 
+ * Funkcja zwraca w postaci tekstowej wszystkie parametry wybranego wiersza
+ *
+ * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji obliczania parametrów
+ * @param [in] wiersz Wiersz względem której zostaną obliczone parametry
+ */
+std::string parametryWiersza(Arkusz arkusz, int wiersz);
+
+/** \brief Funkcja od wyznaczania parametrów kolumny arkusza
+ * 
+ * Funkcja zwraca w postaci tekstowej wszystkie parametry wybranej kolumny
+ *
+ * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji obliczania parametrów
+ * @param [in] kolumna Kolumna względem której zostaną obliczone parametry
+ */
+std::string parametryKolumny(Arkusz arkusz, int kolumna);
 
 #endif

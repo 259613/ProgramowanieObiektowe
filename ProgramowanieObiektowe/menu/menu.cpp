@@ -2,16 +2,18 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <sstream>
 
 #include "menu.hpp"
 
 #include "../io/zapisOdczyt.hpp"
 #include "../utility/utility.hpp"
+#include "../operacje/operacje.hpp"
 
 using namespace std;
 
 void generujMenu(){
-    string elementy[] = { "Wypisz arkusz", "Modyfikuj element", "Zmień rozmiar", "Utwórz nowy arkusz", "Zapisz arkusz", "Wczytaj arkusz", "Wyjdź z programu"};
+    string elementy[] = { "Wypisz arkusz", "Modyfikuj element", "Zmień rozmiar", "Utwórz nowy arkusz", "Zapisz arkusz", "Wczytaj arkusz", "Wyświetl parametry","Wyjdź z programu"};
     int i{};
     for(auto x: elementy){
         cout << ++i << ". " << x << endl;
@@ -24,7 +26,7 @@ void obslugaMenu(){
     Arkusz arkusz = tworzArkusz();
     while(true){
         generujMenu();
-        opcja = wprowadzZakres(1, 7);
+        opcja = wprowadzZakres(1, 8);
         system("clear");
         switch(opcja){
             
@@ -53,7 +55,12 @@ void obslugaMenu(){
                         break;
                     }
             case 7: {
+                        parametry(arkusz);
+                        break;
+                    }
+            case 8: {
                         exit(0);
+                        break;
                     }
         }
     }
@@ -113,3 +120,44 @@ void rozszerzArkusz(Arkusz * arkusz){
     rozszerzArkusz(arkusz, nowyX, nowyY);
 }
 
+void parametry(Arkusz arkusz){
+    cout << "Podaj względem czego chcesz obliczać parametry: " << endl
+    << "0. Kolumny" << endl << "1. Wiersze" << endl;
+    int opcja = wprowadzZakres(0,1);
+
+    string wynik{};
+    
+    if(opcja){
+        cout << "Podaj wiersz względem którego mają zostać podane parametry: ";
+        wynik = parametryWiersza(arkusz, wprowadzZakres(0,arkusz.iloscWierszy-1));
+    }
+    else{
+        cout << "Podaj kolumnę względem którego mają zostać podane parametry: ";
+        wynik = parametryKolumny(arkusz, wprowadzZakres(0,arkusz.iloscKolumn-1));
+    }
+    cout << wynik;
+}
+
+string parametryWiersza(Arkusz arkusz, int wiersz){
+    stringstream ss;
+
+    ss << "Wartość maksymalna wiersza: " << maxWiersz(arkusz, wiersz) << endl;
+    ss << "Wartość minimalna wiersza: " << minWiersz(arkusz, wiersz) << endl;
+    int suma = sumaWiersz(arkusz, wiersz);
+    ss << "Suma elementów wiersza: " << suma << endl;
+    ss << "Średnia elementów wiersza: " << (static_cast<double>(suma)/arkusz.iloscKolumn) << endl;
+
+    return ss.str();
+}
+
+string parametryKolumny(Arkusz arkusz, int kolumna){
+    stringstream ss;
+
+    ss << "Wartość maksymalna kolumny: " << maxKolumna(arkusz, kolumna) << endl;
+    ss << "Wartość minimalna kolumny: " << minKolumna(arkusz, kolumna) << endl;
+    int suma = sumaKolumna(arkusz, kolumna);
+    ss << "Suma elementów kolumny: " << suma << endl;
+    ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.iloscWierszy) << endl;
+
+    return ss.str();
+}
