@@ -2,21 +2,21 @@
 
 #include <fstream>
 
-#include "../tablica/tablica.hpp"
+#include "../io/zapisOdczyt.hpp"
 
 using namespace std;
 
-int zapisPliku(int ** tablica, int rozmiarX, int rozmiarY, string nazwa){
+int zapisPliku(Arkusz arkusz, string nazwa){
     ofstream plik(nazwa);
     
     if(plik.good()){
-        plik << rozmiarY << endl;
-        plik << rozmiarX << endl;
-        for(int y = 0; y < rozmiarY; y++){
-            for(int x = 0; x < rozmiarX; x++){
-                plik << (tablica)[y][x] << (x<rozmiarX-1 ? ", " : "");
+        plik << arkusz.iloscWierszy << endl;
+        plik << arkusz.iloscKolumn << endl;
+        for(int y = 0; y < arkusz.iloscWierszy; y++){
+            for(int x = 0; x < arkusz.iloscKolumn; x++){
+                plik << (arkusz).tablica[y][x] << (x<arkusz.iloscKolumn-1 ? ", " : "");
             }
-            if(y < rozmiarY - 1){
+            if(y < arkusz.iloscWierszy - 1){
                 plik << endl;
             }
         }
@@ -30,10 +30,10 @@ int zapisPliku(int ** tablica, int rozmiarX, int rozmiarY, string nazwa){
     return 0;
 }
 
-int wczytajPlik(int*** tablica, int * rozmiarX, int * rozmiarY, string nazwa){
+int wczytajPlik(Arkusz * arkusz, string nazwa){
     ifstream plik(nazwa);
     if(plik.good()){
-        int rozmiarWczytY{}, rozmiarWczytX{};
+        size_t rozmiarWczytY{}, rozmiarWczytX{};
         plik >> rozmiarWczytY;
         plik >> rozmiarWczytX;
         
@@ -41,17 +41,14 @@ int wczytajPlik(int*** tablica, int * rozmiarX, int * rozmiarY, string nazwa){
             return 3;
         }
 
-        *rozmiarX = rozmiarWczytX;
-        *rozmiarY = rozmiarWczytY;
-
-        *tablica = tworzTablica(rozmiarX, rozmiarY); 
-        for(int y = 0; y < *rozmiarY; y++){
-            for(int x = 0; x < (*rozmiarX) - 1; x++){
+        *arkusz = tworzArkusz(rozmiarWczytX, rozmiarWczytY); 
+        for(int y = 0; y < rozmiarWczytY; y++){
+            for(int x = 0; x < (rozmiarWczytX) - 1; x++){
                 string wartosc;
                 getline(plik, wartosc, ',');
-                (*tablica)[y][x] = stoi(wartosc);
+                (*arkusz).tablica[y][x] = stoi(wartosc);
             }
-            plik >> (*tablica)[y][(*rozmiarX)-1];
+            plik >> (*arkusz).tablica[y][(rozmiarWczytX)-1];
         }
     }
     

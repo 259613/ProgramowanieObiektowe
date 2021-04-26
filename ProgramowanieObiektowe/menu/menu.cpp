@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 #include "menu.hpp"
-#include "../tablica/tablica.hpp"
+
 #include "../io/zapisOdczyt.hpp"
 #include "../utility/utility.hpp"
 
@@ -20,9 +20,8 @@ void generujMenu(){
 }
 
 void obslugaMenu(){
-    int rozmiarX, rozmiarY;
     int opcja{};
-    int ** tablica = tworzArkusz(&rozmiarX, &rozmiarY);
+    Arkusz arkusz = tworzArkusz();
     while(true){
         generujMenu();
         opcja = wprowadzZakres(1, 7);
@@ -30,27 +29,27 @@ void obslugaMenu(){
         switch(opcja){
             
             case 1:{
-                       wyswietlTablica(tablica, rozmiarX, rozmiarY);
+                       wyswietlTablica(arkusz);
                        break;
                    }
             case 2: {
-                        wprowadzWartosc(tablica, rozmiarX, rozmiarY);
+                        wprowadzWartosc(&arkusz);
                         break;
                     }
             case 3: {
-                        rozszerzArkusz(&tablica, &rozmiarX, &rozmiarY);
+                        rozszerzArkusz(&arkusz);
                         break;
                     }
             case 4: {
-                        tablica = tworzArkusz(&rozmiarX, &rozmiarY);
+                        arkusz = tworzArkusz();
                         break;
                     }
             case 5: {
-                        zapis(tablica, rozmiarX, rozmiarY);
+                        zapis(arkusz);
                         break;
                     }
             case 6: {
-                        wczytanie(&tablica, &rozmiarX, &rozmiarY);
+                        wczytanie(&arkusz);
                         break;
                     }
             case 7: {
@@ -60,12 +59,12 @@ void obslugaMenu(){
     }
 }
 
-void wczytanie(int*** tablica, int *rozmiarX, int *rozmiarY){
+void wczytanie(Arkusz* arkusz){
     czyscBufor();
     string plik;
     cout << "Podaj nazwę pliku z którego chcesz wczytać arkusz: ";
     getline(cin, plik);
-    switch(wczytajPlik(tablica, rozmiarX, rozmiarY, plik)){
+    switch(wczytajPlik(arkusz, plik)){
         case 1:{
                    cout << "Brak dostępu do pliku bądź niepoprawna nazwa!\n";
                    break;
@@ -82,12 +81,12 @@ void wczytanie(int*** tablica, int *rozmiarX, int *rozmiarY){
 }
 
 
-void zapis(int **tablica, int rozmiarX, int rozmiarY){
+void zapis(Arkusz arkusz){
     czyscBufor(); 
     string plik;
     cout << "Podaj nazwę pliku do którego chcesz zapisać arkusz: ";
     getline(cin, plik);
-    switch(zapisPliku(tablica, rozmiarX, rozmiarY, plik)){
+    switch(zapisPliku(arkusz, plik)){
         case 1:{
                    cout << "Wystąpił błąd zapisu!\n Brak dostępu do pliku bądź niepoprawna nazwa\n";
                    break;
@@ -95,22 +94,22 @@ void zapis(int **tablica, int rozmiarX, int rozmiarY){
     }
 }
 
-int ** tworzArkusz(int * rozmiarX, int * rozmiarY ){
+Arkusz tworzArkusz(){
     cout << "Wprowadź ilość kolumn tablicy: ";
-    *rozmiarX = wprowadzZakres();
+    size_t rozmiarX = wprowadzZakres();
     cout << "Wprowadź ilość wierszy tablicy: ";
-    *rozmiarY = wprowadzZakres();
+    size_t rozmiarY = wprowadzZakres();
 
-    return tworzTablica(rozmiarX, rozmiarY);
+    return tworzArkusz(rozmiarX, rozmiarY);
 }
 
-void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY){
-    int nowyX, nowyY;
+void rozszerzArkusz(Arkusz * arkusz){
+    size_t nowyX, nowyY;
     cout << "Wprowadź ilość kolumn tablicy: ";
     nowyX = wprowadzZakres();
     cout << "Wprowadź ilość wierszy tablicy: ";
     nowyY = wprowadzZakres();
 
-    rozszerzTablice(tablica, rozmiarX, rozmiarY, nowyX, nowyY);
+    rozszerzArkusz(arkusz, nowyX, nowyY);
 }
 

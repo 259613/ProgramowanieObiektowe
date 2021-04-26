@@ -2,43 +2,45 @@
 
 #include "tablica.hpp"
 
-void rozszerzTablice(int *** tablica, int * rozmiarX, int * rozmiarY, int nowyX, int nowyY){
-    if(*rozmiarX > nowyX){
-        *rozmiarX = nowyX;
+void rozszerzArkusz(Arkusz * arkusz, size_t nowyX, size_t nowyY){
+    if(arkusz->iloscKolumn > nowyX){
+        arkusz->iloscKolumn = nowyX;
     }
-    if(*rozmiarY > nowyY){
-        *rozmiarY = nowyY;
+    if(arkusz->iloscWierszy > nowyY){
+        arkusz->iloscWierszy = nowyY;
     }
 
-    int ** nowaTablica = tworzTablica(&nowyX, &nowyY);
+    Arkusz nowyArkusz = tworzArkusz(nowyX, nowyY);
 
-    for(int y = 0; y < *rozmiarY; y++){
-        for(int x = 0; x < *rozmiarX; x++){
-            nowaTablica[y][x] = (*tablica)[y][x];
+    for(int y = 0; y < arkusz->iloscWierszy; y++){
+        for(int x = 0; x < arkusz->iloscKolumn; x++){
+            nowyArkusz.tablica[y][x] = (*arkusz).tablica[y][x];
         }
-        delete [] (*tablica)[y];
+        delete [] (arkusz->tablica)[y];
     }
 
-    delete [](*tablica);
+    delete [](arkusz->tablica);
 
-    *tablica = nowaTablica;
-    *rozmiarX = nowyX;
-    *rozmiarY = nowyY;
-
+    *arkusz = nowyArkusz;
 }
 
-int ** tworzTablica(int * rozmiarX, int * rozmiarY){
-    int ** tablica = new int*[*rozmiarY];
+Arkusz tworzArkusz(size_t rozmiarX, size_t rozmiarY){
+    Tablica tablica = new int*[rozmiarY];
 
-    int licznik = *rozmiarY;
+    int licznik = rozmiarY;
 
     while(licznik){
-        tablica[--licznik] = new int[*rozmiarX]();
+        tablica[--licznik] = new int[rozmiarX]();
     }
 
-    return tablica;
+    return Arkusz{tablica, rozmiarX, rozmiarY};
 }
 
-void modyfikacjaWartosci(int ** tablica, int x, int y, int wart){
-    tablica[y][x] = wart;
+int modyfikacjaWartosci(Arkusz * arkusz, int x, int y, int wart){
+    if(x > arkusz->iloscKolumn || y > arkusz->iloscWierszy){
+        return 5;
+    }
+
+    arkusz->tablica[y][x] = wart;
+    return 0;
 }

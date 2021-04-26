@@ -1,17 +1,34 @@
 #ifndef GUARD_HEADER
 #define GUARD_HEADER
+
+#include <cstddef>
+
 /// @file
+
+
+/*! Definicja/alias typu  int** jako Tablica */
+typedef int ** Tablica;
+
+
+/** 
+ * \brief Struktura Arkusz
+ * Struktura Arkusz przechowywujaca tablicę i jej rozmiar
+ */
+struct Arkusz{
+    Tablica tablica; /*!< Tablica dwuwymiarowa */  
+    size_t iloscKolumn; /*!< Ilość kolumn - rozmiar X */  
+    size_t iloscWierszy; /*!< Ilość wierszy - rozmiar Y */  
+};
+
 
 /** 
  * \brief Generuje podgląd tablicy.
  * 
  * Generuje tablicę na konsoli wyświetlając wszystkie zawarte w niej komórki
  * 
- * @param[in] tablica pobiera tablicę celem jej wyświetlenia
- * @param[in] rozX pobiera szerokość tablicy
- * @param[in] rozY pobiera wysokość tablicy
+ * @param[in] arkusz pobiera arkusz celem jego wyświetlenia
  */
-void wyswietlTablica(int** tablica, int rozX, int rozY);
+void wyswietlTablica(Arkusz arkusz);
 
 /** 
  * \brief Interfejs użytkownika wprowadzania nowej wartości.
@@ -19,49 +36,45 @@ void wyswietlTablica(int** tablica, int rozX, int rozY);
  * Funkcja interfejsu wprowadzenia wartości do tablicy.
  * Wprowadzana wartość spoza przedziału zostanie zablokowana
  * 
- * @param[in,out] tablica tablica która zostaje zmodyfikowana
- * @param[in] rozX szerokość modyfikowanej tablicy
- * @param[in] rozY wysokość modyfikowanej tablicy
+ * @param[in,out] arkusz arkusz która zostaje zmodyfikowany
  */
-void wprowadzWartosc(int** tablica, int rozX, int rozY);
+void wprowadzWartosc(Arkusz * arkusz);
 
 /** 
  * \brief Modyfikacja rozmiaru tablicy.
  * 
- * Funkcja modyfikująca rozmiar tablicy,
- * wartości modyfikowanej tablicy zostają zachowane 
+ * Funkcja modyfikująca rozmiar arkusza,
+ * wartości modyfikowanego arkuszu zostają zachowane 
  * wraz z rozszerzaniem bądź redukcją rozmiaru 
  * (przy redukcji możliwa utrata kolumn/wierszy)
  * 
- * @param[in,out] tablica modyfikowana tablica
- * @param[in,out] rozmiarX szerokość przed zmianą, zostaje nadpisany przez nowyX
- * @param[in,out] rozmiarY wysokość przed zmianą, zostaje nadpisany przez nowyY
+ * @param[in,out] arkusz przekazywany arkusz celem zmiany jego rozmiaru
  * @param[in] nowyX nowa szerokość tablicy
  * @param[in] nowyY nowa wysokość tablicy
  */
-void rozszerzTablice(int*** tablica, int* rozmiarX, int* rozmiarY, int nowyX, int nowyY);
+void rozszerzArkusz(Arkusz * arkusz, size_t nowyX, size_t nowyY);
 
 /** 
- * \brief Tworzy nową tablice dwuwymiarową.
+ * \brief Tworzy nowy arkusz dwuwymiarowy.
  *
- * Funkcja generujaca nową tablicę o określonym rozmiarze
+ * Funkcja generujaca nowy arkusz o określonym rozmiarze
  * 
  * @param[in] rozmiarX szerokość nowej tablicy
  * @param[in] rozmiarY wysokość nowej tablicy 
- * @return Nowa tablica dwuwymiarowa
+ * @return Nowy arkusz z tabilcą dwuwymiarową
  */
-int ** tworzTablica(int* rozmiarX,int* rozmiarY);
+Arkusz tworzArkusz(size_t rozmiarX, size_t rozmiarY);
 
 /** 
- * \brief Wstawia określoną wartość do komórki w tablicy.
+ * \brief Wstawia określoną wartość do komórki tablicy w arkuszu.
  * 
  * Funkcja wstawia wartość do komórki o określonym adresie
- * FUNKCJA NIE POSIADA KONTROLI POPRAWNOŚCI
  * 
- * @param[in,out] tablica tablica do której wprowadzamy dane
+ * 
+ * @param[in,out] arkusz który modyfikujemy
  * @param[in] x określona kolumna
  * @param[in] y określony wiersz
  * @param[in] wart wprowadzana wartość
  */
-void modyfikacjaWartosci(int** tablica, int x, int y, int wart);
+int modyfikacjaWartosci(Arkusz * arkusz, int x, int y, int wart);
 #endif

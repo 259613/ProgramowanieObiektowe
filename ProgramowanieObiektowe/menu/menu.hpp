@@ -1,6 +1,8 @@
 #ifndef HEADER_GUARD
 #define HEADER_GUARD
+
 /// @file
+#include "../tablica/tablica.hpp"
 
 
 
@@ -22,47 +24,35 @@ void generujMenu();
 /**
  * \brief Funkcja tworząca nową tablicę.
  * 
- * Funkcja zawierająca interfejs umożliwiający tworzenie nowej tablicy dwuwymiarowej
- * zwraca wskaźnik na wskaźnik typu int.
+ * Funkcja zawierająca interfejs umożliwiający tworzenie nowego Arkusza z tablicą  dwuwymiarową.
  * 
- * @param[out] rozmiarX wartość nowej szerokości tablicy
- * @param[out] rozmiarY wartość nowej wysokości tablicy
- * @return Tablicę do do wykorzystania w arkuszu
+ * @return Nowy Arkusz do wykorzystywania w programie 
  */
-int ** tworzArkusz(int* rozmiarX,int* rozmiarY);
+Arkusz tworzArkusz();
 
 /** 
  * \brief Funkcja modyfikująca rozmiar arkusza.
  * 
- * Interfejs umożliwiający rozszerzanie istniejącego arkusza.
+ * Interfejs umożliwiający modyfikację rozmiaru istniejącego arkusza.
  * 
- * @param[in,out] tablica wskaźnik na poprzednią tablicę arkusza
- * @param[in,out] rozmiarX parametr zawiera szerokość modyfikowanego arkusza, parametr jest modyfikowany zawierając nową szerokość
- * @param[in,out] rozmiarY parametr zawiera wysokość modyfikowanego arkusza, parametr jest modyfikowany zawierając nową wysokość
+ * @param[in,out] arkusz Arkusz przeznaczony do modyfikacji rozmiaru
  */
-void rozszerzArkusz(int *** tablica, int * rozmiarX, int * rozmiarY);
+void rozszerzArkusz(Arkusz * arkusz);
 
-/** \brief Funkcja wczytywania tablicy
- * Funkcja menu od wczytywania tablicy, ma za zadanie opakowanie funkcji IO wczytajPlik
- * @param [out] rozmiarX szerokość tablicy wczytanej
- * @param [out] rozmiarY wysokość tablicy wczytanej
- * @param [in,out] tablica tablica do której mogą być wczytane elementy
+/** \brief Funkcja wczytywania arkusza
+ * Funkcja menu od wczytywania arkusza, ma za zadanie opakowanie funkcji IO wczytajPlik
+ * @param [in,out] arkusz Arkusz do którego mogą być wczytane elementy
  * 
  */
-void wczytanie(int *** tablica, int * rozmiarX, int * rozmiarY);
+void wczytanie(Arkusz * arkusz);
 
 /** \brief Funkcja menu od zapisu
  * 
  * Funkcja menu od zapisu która ma za zadanie przetworzenie i opakowanie funkcji IO zapisPliku
  *
- * @param [in] tablica przekazywana jest tablica do odczytu w zapisie do pliku
- * @param [in] rozmiarX szerokość zczytywanego arkusza
- * @param [in] rozmiarY wysokość zczytywanego arkusza 
+ * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji zapisującej do pliku
  */
-void zapis(int ** tablica, int rozmiarX, int rozmiarY);
-
-
-
+void zapis(Arkusz arkusz);
 
 
 
