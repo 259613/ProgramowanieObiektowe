@@ -1,30 +1,43 @@
 /// @file
 
 #include "tablica.hpp"
+#include <limits>
 
-void rozszerzArkusz(Arkusz * arkusz, size_t nowyX, size_t nowyY){
-    if(arkusz->iloscKolumn > nowyX){
-        arkusz->iloscKolumn = nowyX;
-    }
-    if(arkusz->iloscWierszy > nowyY){
-        arkusz->iloscWierszy = nowyY;
-    }
-
-    Arkusz nowyArkusz = tworzArkusz(nowyX, nowyY);
-
-    for(int y = 0; y < arkusz->iloscWierszy; y++){
-        for(int x = 0; x < arkusz->iloscKolumn; x++){
-            nowyArkusz.tablica[y][x] = (*arkusz).tablica[y][x];
-        }
-        delete [] (arkusz->tablica)[y];
-    }
-
-    delete [](arkusz->tablica);
-
-    *arkusz = nowyArkusz;
+Arkusz::Arkusz(size_t kolumny, size_t wiersze){
+    iloscWierszy = wiersze;
+    iloscKolumn = kolumny;
+    tablica = tworzTablica(kolumny, wiersze);
 }
 
-Arkusz tworzArkusz(size_t rozmiarX, size_t rozmiarY){
+int Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY){
+    if(nowyX < 1 || nowyY < 1){
+        return 6;
+    }
+
+    if(iloscKolumn > nowyX){
+        iloscKolumn = nowyX;
+    }
+    if(iloscWierszy > nowyY){
+        iloscWierszy = nowyY;
+    }
+
+    Tablica nowaTablica = tworzTablica(nowyX, nowyY);
+
+    for(size_t y = 0; y < iloscWierszy; y++){
+        for(size_t x = 0; x < iloscKolumn; x++){
+            nowaTablica[y][x] = tablica[y][x];
+        }
+        delete [] (tablica)[y];
+    }
+
+    delete [](tablica);
+    iloscWierszy = nowyY;
+    iloscKolumn = nowyX;
+    tablica = nowaTablica;
+    return 0;
+}
+
+Tablica Arkusz::tworzTablica(size_t rozmiarX, size_t rozmiarY){
     Tablica tablica = new int*[rozmiarY];
 
     int licznik = rozmiarY;
@@ -33,14 +46,29 @@ Arkusz tworzArkusz(size_t rozmiarX, size_t rozmiarY){
         tablica[--licznik] = new int[rozmiarX]();
     }
 
-    return Arkusz{tablica, rozmiarX, rozmiarY};
+    return tablica;
 }
 
-int modyfikacjaWartosci(Arkusz * arkusz, int x, int y, int wart){
-    if(x > arkusz->iloscKolumn || y > arkusz->iloscWierszy){
+int Arkusz::modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc){
+    if(x > iloscKolumn || y > iloscWierszy){
         return 5;
     }
 
-    arkusz->tablica[y][x] = wart;
+    tablica[y][x] = wartosc;
     return 0;
+}
+
+Komorka Arkusz::zwrocWartosc(size_t x, size_t y){
+    if(x > iloscKolumn || y > iloscWierszy){
+        return std::numeric_limits<Komorka>::min();
+    }
+    return tablica[y][x];
+}
+
+size_t Arkusz::rozmiarX(){
+    return iloscKolumn;
+}
+
+size_t Arkusz::rozmiarY(){
+    return iloscWierszy;
 }

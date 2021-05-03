@@ -8,15 +8,16 @@ using namespace std;
 
 int zapisPliku(Arkusz arkusz, string nazwa){
     ofstream plik(nazwa);
-    
+    size_t iloscKolumn = arkusz.rozmiarX();
+    size_t iloscWierszy= arkusz.rozmiarY();
     if(plik.good()){
-        plik << arkusz.iloscWierszy << endl;
-        plik << arkusz.iloscKolumn << endl;
-        for(int y = 0; y < arkusz.iloscWierszy; y++){
-            for(int x = 0; x < arkusz.iloscKolumn; x++){
-                plik << (arkusz).tablica[y][x] << (x<arkusz.iloscKolumn-1 ? ", " : "");
+        plik << iloscWierszy << endl;
+        plik << iloscKolumn << endl;
+        for(size_t y = 0; y < iloscWierszy; y++){
+            for(size_t x = 0; x < iloscKolumn; x++){
+                plik << arkusz.zwrocWartosc(x,y) << (x<iloscKolumn-1 ? ", " : "");
             }
-            if(y < arkusz.iloscWierszy - 1){
+            if(y < iloscWierszy - 1){
                 plik << endl;
             }
         }
@@ -41,14 +42,16 @@ int wczytajPlik(Arkusz * arkusz, string nazwa){
             return 3;
         }
 
-        *arkusz = tworzArkusz(rozmiarWczytX, rozmiarWczytY); 
-        for(int y = 0; y < rozmiarWczytY; y++){
-            for(int x = 0; x < (rozmiarWczytX) - 1; x++){
+        *arkusz = Arkusz(rozmiarWczytX, rozmiarWczytY); 
+        for(size_t y = 0; y < rozmiarWczytY; y++){
+            for(size_t x = 0; x < (rozmiarWczytX) - 1; x++){
                 string wartosc;
                 getline(plik, wartosc, ',');
-                (*arkusz).tablica[y][x] = stoi(wartosc);
+                (*arkusz).modyfikacjaWartosci(x,y, stoi(wartosc));
             }
-            plik >> (*arkusz).tablica[y][(rozmiarWczytX)-1];
+            Komorka wart;
+            plik >> wart;
+            (*arkusz).modyfikacjaWartosci((rozmiarWczytX)-1,y,wart);
         }
     }
     

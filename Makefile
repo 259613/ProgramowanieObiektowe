@@ -1,4 +1,4 @@
-FLAGS = -Wall -pedantic -std=c++20 -lncurses
+FLAGS = -Wall -pedantic -std=c++20
 CATALOG = ./ProgramowanieObiektowe
 
 app.out : main.o tablica.o tablica_wysw.o menu.o zapisOdczyt.o utility.o operacje.o

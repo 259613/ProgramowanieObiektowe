@@ -1,5 +1,5 @@
-#ifndef GUARD_HEADER_OP
-#define GUARD_HEADER_OP
+#ifndef HEADER_GUARD_OPERACJE_
+#define HEADER_GUARD_OPERACJE_
 
 #include "../tablica/tablica.hpp"
 

@@ -107,7 +107,7 @@ Arkusz tworzArkusz(){
     cout << "Wprowadź ilość wierszy tablicy: ";
     size_t rozmiarY = wprowadzZakres();
 
-    return tworzArkusz(rozmiarX, rozmiarY);
+    return Arkusz(rozmiarX, rozmiarY);
 }
 
 void rozszerzArkusz(Arkusz * arkusz){
@@ -117,7 +117,7 @@ void rozszerzArkusz(Arkusz * arkusz){
     cout << "Wprowadź ilość wierszy tablicy: ";
     nowyY = wprowadzZakres();
 
-    rozszerzArkusz(arkusz, nowyX, nowyY);
+    arkusz->rozszerzArkusz(nowyX, nowyY);
 }
 
 void parametry(Arkusz arkusz){
@@ -129,11 +129,11 @@ void parametry(Arkusz arkusz){
     
     if(opcja){
         cout << "Podaj wiersz względem którego mają zostać podane parametry: ";
-        wynik = parametryWiersza(arkusz, wprowadzZakres(0,arkusz.iloscWierszy-1));
+        wynik = parametryWiersza(arkusz, wprowadzZakres(0,arkusz.rozmiarY()-1));
     }
     else{
         cout << "Podaj kolumnę względem którego mają zostać podane parametry: ";
-        wynik = parametryKolumny(arkusz, wprowadzZakres(0,arkusz.iloscKolumn-1));
+        wynik = parametryKolumny(arkusz, wprowadzZakres(0,arkusz.rozmiarX()-1));
     }
     cout << wynik;
 }
@@ -145,7 +145,7 @@ string parametryWiersza(Arkusz arkusz, int wiersz){
     ss << "Wartość minimalna wiersza: " << minWiersz(arkusz, wiersz) << endl;
     int suma = sumaWiersz(arkusz, wiersz);
     ss << "Suma elementów wiersza: " << suma << endl;
-    ss << "Średnia elementów wiersza: " << (static_cast<double>(suma)/arkusz.iloscKolumn) << endl;
+    ss << "Średnia elementów wiersza: " << (static_cast<double>(suma)/arkusz.rozmiarX()) << endl;
 
     return ss.str();
 }
@@ -157,7 +157,7 @@ string parametryKolumny(Arkusz arkusz, int kolumna){
     ss << "Wartość minimalna kolumny: " << minKolumna(arkusz, kolumna) << endl;
     int suma = sumaKolumna(arkusz, kolumna);
     ss << "Suma elementów kolumny: " << suma << endl;
-    ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.iloscWierszy) << endl;
+    ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.rozmiarY()) << endl;
 
     return ss.str();
 }
