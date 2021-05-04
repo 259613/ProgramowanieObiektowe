@@ -10,6 +10,7 @@
 #include "../utility/utility.hpp"
 #include "../operacje/operacje.hpp"
 
+
 using namespace std;
 
 void generujMenu(){
@@ -71,20 +72,7 @@ void wczytanie(Arkusz* arkusz){
     string plik;
     cout << "Podaj nazwę pliku z którego chcesz wczytać arkusz: ";
     getline(cin, plik);
-    switch(wczytajPlik(arkusz, plik)){
-        case 1:{
-                   cout << "Brak dostępu do pliku bądź niepoprawna nazwa!\n";
-                   break;
-               }
-        case 2:{
-                   cout << "Niepoprawny format wczytywanego pliku!\n";
-                   break;
-               }
-        case 3:{
-                   cout << "Niepoprawny rozmiar wczytywanego arkusza!\n";
-                   break;
-               }
-    }
+    obslugaBledow(wczytajPlik(arkusz, plik));
 }
 
 
@@ -93,12 +81,7 @@ void zapis(Arkusz arkusz){
     string plik;
     cout << "Podaj nazwę pliku do którego chcesz zapisać arkusz: ";
     getline(cin, plik);
-    switch(zapisPliku(arkusz, plik)){
-        case 1:{
-                   cout << "Wystąpił błąd zapisu!\n Brak dostępu do pliku bądź niepoprawna nazwa\n";
-                   break;
-               }
-    }
+    obslugaBledow(zapisPliku(arkusz, plik));
 }
 
 Arkusz tworzArkusz(){
@@ -160,4 +143,32 @@ string parametryKolumny(Arkusz arkusz, int kolumna){
     ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.rozmiarY()) << endl;
 
     return ss.str();
+}
+
+void obslugaBledow(Wyjatki wyjatek){
+    switch(wyjatek){
+        case Wyjatki::BRAK:{
+            break;
+        }
+        case Wyjatki::PLIK_ACCESS:{
+            cout << "Brak dostępu do pliku bądź niepoprawna nazwa!\n";
+            break;
+        }
+        case Wyjatki::PLIK_FORMAT:{
+            cout << "Niepoprawny format wczytywanego pliku!\n";
+            break;
+        }
+        case Wyjatki::PLIK_ROZMIAR:{
+            cout << "Niepoprawny rozmiar wczytywanego arkusza!\n";
+            break;
+        }
+        case Wyjatki::TABLICA_SIZE:{
+            cout << "Niepoprawny rozmiar tworzonego arkusza!\n";
+            break;
+        }
+        case Wyjatki::TABLICA_ZAKR:{
+            cout << "Niepoprawny dostęp do tablicy arkusza!\nIndeks spoza zakresu!\n";
+            break;
+        }
+    }
 }

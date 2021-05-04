@@ -1,7 +1,8 @@
-#include "../tablica/tablica.hpp"
 #ifndef HEADER_GUARD_IO_OPERACJE_
 #define HEADER_GUARD_IO_OPERACJE_
 /// @file
+#include "../tablica/tablica.hpp"
+#include "../error.hpp"
 
 /*! \brief Funkcja zapisu do pliku
  *
@@ -9,10 +10,10 @@
  * 
  * @param [in] arkusz Arkusz przeznaczony do zapisu
  * @param [in] nazwa Nazwa zapisywanego pliku
- * @return Zwraca stan funkcji "0 - Funkcja wykonana", "1 - Niepoprawna nazwa pliku"
+ * @return Zwraca stan funkcji "::BRAK - Funkcja wykonana bez błednie", "::PLIK_ACCESS - Niepoprawna nazwa bądź brak dostępu do pliku"
  *
  */
-int zapisPliku(Arkusz arkusz, std::string nazwa);
+Wyjatki zapisPliku(Arkusz arkusz, std::string nazwa);
 
 /*! \brief Funkcja wczytywania tablicy z pliku
  *
@@ -20,8 +21,8 @@ int zapisPliku(Arkusz arkusz, std::string nazwa);
  *
  * @param [in,out] arkusz Arkusz do nadpisania wczytywaną tablicą
  * @param [in] nazwa Nazwa wczytywanego pliku
- * @return Zwraca stan funkcji "0 - Funkcja wykonana", "1 - Niepoprawna nazwa pliku", "2 - Niepoprawny format" , "3 - Niepoprawny rozmiar"
+ * @return Zwraca stan funkcji "::BRAK - Funkcja wykonana bez błędnie", "1::PLIK_ACCESS - Niepoprawna nazwa bądź brak dostępu do pliku", "::PLIK_FORMAT - Niepoprawny format" , "::PLIK_ROZMIAR - Niepoprawny rozmiar wczytywanej tablicy"
  */
-int wczytajPlik(Arkusz * arkusz, std::string nazwa);
+Wyjatki wczytajPlik(Arkusz * arkusz, std::string nazwa);
 
 #endif

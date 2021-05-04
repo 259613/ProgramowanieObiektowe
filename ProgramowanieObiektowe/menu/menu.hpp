@@ -4,7 +4,7 @@
 /// @file
 #include "../tablica/tablica.hpp"
 #include <string>
-
+#include "../error.hpp"
 
 /** 
  * \brief Funkcja kontrolująca działanie programu.
@@ -83,4 +83,10 @@ std::string parametryWiersza(Arkusz arkusz, int wiersz);
  */
 std::string parametryKolumny(Arkusz arkusz, int kolumna);
 
+/** \brief Funkcja zajmująca się "Przechwytywaniem wyjątków" i ich wypisywaniem
+ * Wypisuje napotkany "Wyjątek", Nie wypisze nic jeśli wyjątek ma wartość ::BRAK
+ * 
+ * @param [in] wyjatek Wyjątek który zostanie przechwycony
+ */
+void obslugaBledow(Wyjatki wyjatek);
 #endif

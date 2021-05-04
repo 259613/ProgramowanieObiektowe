@@ -1,9 +1,11 @@
 #ifndef HEADER_GUARD_TABLICA_
 #define HEADER_GUARD_TABLICA_
-#include <cstddef>
 
 
 /// @file
+
+#include <cstddef>
+#include "../error.hpp"
 
 /*! Definicja/alias typu  int jako typ określający komórkę */
 typedef int Komorka;
@@ -51,9 +53,9 @@ class Arkusz{
      * @param[in] x określona kolumna
      * @param[in] y określony wiersz
      * @param[in] wart wprowadzana wartość
-     * @return Kod błędu
+     * @return Kod błędu, ::BRAK - Brak błędu, ::TABLICA_ZAKR - indeks spoza zakresu tablicy
      */
-    int modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc);
+    Wyjatki modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc);
 
     /** 
      * \brief Modyfikacja rozmiaru tablicy.
@@ -65,9 +67,9 @@ class Arkusz{
      * 
      * @param[in] nowyX nowa szerokość tablicy
      * @param[in] nowyY nowa wysokość tablicy
-     * @return Kod błędu
+     * @return Kod błędu, ::BRAK - Brak błędu, ::TABLICA_SIZE - Niepoprawny rozmiar tablicy
      */
-    int rozszerzArkusz(size_t x, size_t y);
+    Wyjatki rozszerzArkusz(size_t x, size_t y);
     
     /**
      * \brief Zwraca wartość wybranej komórki  

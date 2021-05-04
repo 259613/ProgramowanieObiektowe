@@ -1,12 +1,11 @@
 /// @file
 
 #include <fstream>
-
 #include "../io/zapisOdczyt.hpp"
 
 using namespace std;
 
-int zapisPliku(Arkusz arkusz, string nazwa){
+Wyjatki zapisPliku(Arkusz arkusz, string nazwa){
     ofstream plik(nazwa);
     size_t iloscKolumn = arkusz.rozmiarX();
     size_t iloscWierszy= arkusz.rozmiarY();
@@ -24,14 +23,14 @@ int zapisPliku(Arkusz arkusz, string nazwa){
     }
 
     else{
-        return 1;
+        return Wyjatki::PLIK_ACCESS;
     }
     
     plik.close();
-    return 0;
+    return Wyjatki::BRAK;
 }
 
-int wczytajPlik(Arkusz * arkusz, string nazwa){
+Wyjatki wczytajPlik(Arkusz * arkusz, string nazwa){
     ifstream plik(nazwa);
     if(plik.good()){
         size_t rozmiarWczytY{}, rozmiarWczytX{};
@@ -39,7 +38,7 @@ int wczytajPlik(Arkusz * arkusz, string nazwa){
         plik >> rozmiarWczytX;
         
         if(rozmiarWczytX < 1 || rozmiarWczytY < 1){
-            return 3;
+            return Wyjatki::PLIK_ROZMIAR;
         }
 
         *arkusz = Arkusz(rozmiarWczytX, rozmiarWczytY); 
@@ -56,9 +55,9 @@ int wczytajPlik(Arkusz * arkusz, string nazwa){
     }
     
     else{
-        return 1;
+        return Wyjatki::PLIK_ACCESS;
     }
     
     plik.close();
-    return 0;
+    return Wyjatki::BRAK;
 }

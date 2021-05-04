@@ -9,9 +9,9 @@ Arkusz::Arkusz(size_t kolumny, size_t wiersze){
     tablica = tworzTablica(kolumny, wiersze);
 }
 
-int Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY){
+Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY){
     if(nowyX < 1 || nowyY < 1){
-        return 6;
+        return Wyjatki::TABLICA_SIZE;
     }
 
     if(iloscKolumn > nowyX){
@@ -34,7 +34,7 @@ int Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY){
     iloscWierszy = nowyY;
     iloscKolumn = nowyX;
     tablica = nowaTablica;
-    return 0;
+    return Wyjatki::BRAK;
 }
 
 Tablica Arkusz::tworzTablica(size_t rozmiarX, size_t rozmiarY){
@@ -49,13 +49,13 @@ Tablica Arkusz::tworzTablica(size_t rozmiarX, size_t rozmiarY){
     return tablica;
 }
 
-int Arkusz::modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc){
+Wyjatki Arkusz::modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc){
     if(x > iloscKolumn || y > iloscWierszy){
-        return 5;
+        return Wyjatki::TABLICA_ZAKR;
     }
 
     tablica[y][x] = wartosc;
-    return 0;
+    return Wyjatki::BRAK;
 }
 
 Komorka Arkusz::zwrocWartosc(size_t x, size_t y){
