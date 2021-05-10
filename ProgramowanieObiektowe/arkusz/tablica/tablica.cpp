@@ -1,6 +1,7 @@
 /// @file
 
 #include "tablica.hpp"
+
 #include <limits>
 
 Arkusz::Arkusz(size_t kolumny, size_t wiersze){
@@ -38,31 +39,31 @@ Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY){
 }
 
 Tablica Arkusz::tworzTablica(size_t rozmiarX, size_t rozmiarY){
-    Tablica tablica = new int*[rozmiarY];
+    Tablica tablica = new Komorka*[rozmiarY];
 
     int licznik = rozmiarY;
 
     while(licznik){
-        tablica[--licznik] = new int[rozmiarX]();
+        tablica[--licznik] = new Komorka[rozmiarX]();
     }
 
     return tablica;
 }
 
-Wyjatki Arkusz::modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc){
+Wyjatki Arkusz::modyfikacjaWartosci(size_t x, size_t y, int wartosc){
     if(x > iloscKolumn || y > iloscWierszy){
         return Wyjatki::TABLICA_ZAKR;
     }
 
-    tablica[y][x] = wartosc;
+    tablica[y][x].setValue(wartosc);
     return Wyjatki::BRAK;
 }
 
-Komorka Arkusz::zwrocWartosc(size_t x, size_t y){
+int Arkusz::zwrocWartosc(size_t x, size_t y){
     if(x > iloscKolumn || y > iloscWierszy){
-        return std::numeric_limits<Komorka>::min();
+        return std::numeric_limits<int>::min();
     }
-    return tablica[y][x];
+    return tablica[y][x].getValue();
 }
 
 size_t Arkusz::rozmiarX(){

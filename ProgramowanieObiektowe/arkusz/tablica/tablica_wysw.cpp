@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "tablica.hpp"
-#include "../utility/utility.hpp"
+#include "../../utility/utility.hpp"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ void wyswietlTablica(Arkusz arkusz){
 
 void wprowadzWartosc(Arkusz * arkusz){
     size_t wspX, wspY;
-    Komorka wart;
+    int wart;
     cout << "Wprowadź której kolumny: ";
     wspX = wprowadzZakres(0, arkusz->rozmiarX()-1);
     cout << "Wprowadź który wiersz: ";

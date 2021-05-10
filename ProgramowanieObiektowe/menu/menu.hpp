@@ -2,7 +2,7 @@
 #define HEADER_GUARD
 
 /// @file
-#include "../tablica/tablica.hpp"
+#include "../arkusz/tablica/tablica.hpp"
 #include <string>
 #include "../error.hpp"
 

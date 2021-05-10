@@ -1,7 +1,7 @@
 #ifndef HEADER_GUARD_IO_OPERACJE_
 #define HEADER_GUARD_IO_OPERACJE_
 /// @file
-#include "../tablica/tablica.hpp"
+#include "../arkusz/tablica/tablica.hpp"
 #include "../error.hpp"
 
 /*! \brief Funkcja zapisu do pliku

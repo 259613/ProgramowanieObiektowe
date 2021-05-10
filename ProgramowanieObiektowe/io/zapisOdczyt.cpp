@@ -48,7 +48,7 @@ Wyjatki wczytajPlik(Arkusz * arkusz, string nazwa){
                 getline(plik, wartosc, ',');
                 (*arkusz).modyfikacjaWartosci(x,y, stoi(wartosc));
             }
-            Komorka wart;
+            int wart;
             plik >> wart;
             (*arkusz).modyfikacjaWartosci((rozmiarWczytX)-1,y,wart);
         }

@@ -5,10 +5,10 @@
 /// @file
 
 #include <cstddef>
-#include "../error.hpp"
-
+#include "../../error.hpp"
+#include "../komorka/cell.hpp"
 /*! Definicja/alias typu  int jako typ określający komórkę */
-typedef int Komorka;
+typedef Cell<int> Komorka;
 /*! Definicja/alias typu  Komórka** jako Tablica komórek */
 typedef Komorka ** Tablica;
 
@@ -55,7 +55,7 @@ class Arkusz{
      * @param[in] wart wprowadzana wartość
      * @return Kod błędu, ::BRAK - Brak błędu, ::TABLICA_ZAKR - indeks spoza zakresu tablicy
      */
-    Wyjatki modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc);
+    Wyjatki modyfikacjaWartosci(size_t x, size_t y, int wartosc);
 
     /** 
      * \brief Modyfikacja rozmiaru tablicy.
@@ -83,7 +83,7 @@ class Arkusz{
      * @return Wartość komórki w przeciwnym wypadku najmniejsza możliwa wartość
      * 
      */
-    Komorka zwrocWartosc(size_t x, size_t y);
+    int zwrocWartosc(size_t x, size_t y);
 
 
     /**
