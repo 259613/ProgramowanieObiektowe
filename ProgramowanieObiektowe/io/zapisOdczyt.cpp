@@ -1,7 +1,7 @@
 /// @file
 
 #include <fstream>
-#include "../io/zapisOdczyt.hpp"
+#include "zapisOdczyt.hpp"
 
 using namespace std;
 

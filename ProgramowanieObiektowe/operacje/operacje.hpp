@@ -1,7 +1,7 @@
 #ifndef HEADER_GUARD_OPERACJE_
 #define HEADER_GUARD_OPERACJE_
 
-#include "../tablica/tablica.hpp"
+#include "../arkusz/tablica/tablica.hpp"
 
 /*! \brief Funkcja szukania maksymalnej wartości wiersza
  *

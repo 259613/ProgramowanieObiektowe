@@ -5,7 +5,7 @@
 /// @file
 
 #include <cstddef>
-#include "../error.hpp"
+#include "../../error.hpp"
 
 /*! Definicja/alias typu  int jako typ określający komórkę */
 typedef int Komorka;
