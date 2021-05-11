@@ -104,6 +104,8 @@ class Arkusz{
      */
     size_t rozmiarY();
 
+
+
 };
 
 

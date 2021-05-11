@@ -5,12 +5,21 @@
 #include <string>
 #include <sstream>
 
+
+/**
+ * \brief definicja pustej klasy do generalizacji Cell'a
+ * Pusta klasa utworzona w celu generalizaccji klasy Cell
+ */
+struct AbstractCell{
+    virtual ~AbstractCell(){};
+};
+
 /** 
  * \brief Szablon klasy komórki
  * Klasa komórka przechowywująca pewną wartość określonego typu
  */
 template <class T>
-class Cell
+class Cell: public AbstractCell
 {
     /** 
      * \brief Wartość komórki
@@ -56,6 +65,8 @@ class Cell
      * @return Zwraca wartość logiczną 'true' dla elementów które można obliczać a 'false' dla tych które nie mogą być obliczane.
      */
     bool Calculateable();
+
+    virtual ~Cell(){}
 };
 
 
