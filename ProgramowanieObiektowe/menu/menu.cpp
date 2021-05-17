@@ -86,12 +86,14 @@ void zapis(Arkusz arkusz){
 }
 
 Arkusz tworzArkusz(){
+    cout << "Podaj czy tablica ma być Tekstowa (1) czy liczbowa (0)";
+    bool czyTekstowa = wprowadzZakres(0,1) ? true : false;
     cout << "Wprowadź ilość kolumn tablicy: ";
     size_t rozmiarX = wprowadzZakres();
     cout << "Wprowadź ilość wierszy tablicy: ";
     size_t rozmiarY = wprowadzZakres();
 
-    return Arkusz(rozmiarX, rozmiarY);
+    return Arkusz(rozmiarX, rozmiarY, czyTekstowa);
 }
 
 void rozszerzArkusz(Arkusz * arkusz){
@@ -105,6 +107,10 @@ void rozszerzArkusz(Arkusz * arkusz){
 }
 
 void parametry(Arkusz arkusz){
+    if(arkusz.czyTekstowa()){
+        cout << "Sprawdzanie parametrów arkusza nie jest dostępne dla tablic tekstowych!" << endl;
+        return;
+    }
     cout << "Podaj względem czego chcesz obliczać parametry: " << endl
     << "0. Kolumny" << endl << "1. Wiersze" << endl;
     int opcja = wprowadzZakres(0,1);
