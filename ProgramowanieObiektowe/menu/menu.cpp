@@ -7,6 +7,7 @@
 #include "menu.hpp"
 
 #include "../io/zapisOdczyt.hpp"
+#include "../arkusz/tablica/tablica_wysw.hpp"
 #include "../utility/utility.hpp"
 #include "../operacje/operacje.hpp"
 

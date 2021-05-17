@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include "tablica.hpp"
-#include "../utility/utility.hpp"
+#include "tablica_wysw.hpp"
+#include "../../utility/utility.hpp"
 
 using namespace std;
 
