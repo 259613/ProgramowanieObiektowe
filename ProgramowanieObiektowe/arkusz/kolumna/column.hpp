@@ -9,7 +9,30 @@ class Column{
 
 	Cell **cells;
 	std::size_t sizeY;
+	bool textOnly;
+	
+	private:
+
+	/**
+	 * @brief Metoda prywatna od tworzenia nowej kolumny
+	 * 
+	 * @param sizeY rozmiar nowej tablicy kolumny
+	 * @param textOnly czy komórki są typu tekstowego
+	 * @return Cell** tablica kolumny
+	 */
+	static Cell ** genColumn(size_t sizeY, bool textOnly);
+	
 	public:
+
+	/**
+	 * @brief Konstruktor kolumny
+	 * Konstruktor kolumny tworzący kolumne o okeślonym rozmiarze i typie
+	 * @param sizeY rozmiar kolumny
+	 * @param textOnly czy tylko tekstowa
+	 */
+	Column(size_t sizeY, bool textOnly);
+
+
 
 	/**
 	 * @brief zwraca komórkę kolumny
@@ -35,6 +58,23 @@ class Column{
 	 * @return std::size_t Rozmiar kolumny
 	 */
 	std::size_t getSize();
+
+	/**
+	 * @brief funkcja zmiany rozmiaru kolumny
+	 * Funkcja zmienia rozmiar kolumny przepisując zawartość starego rozmiaru do nowego
+	 * Możliwa utrata danych przy zmianie rozmiaru na mniejszy
+	 * 
+	 * @param[in] sizeY nowy rozmiar tablicy.
+	 */
+	void resizeColumn(std::size_t sizeY);
+
+	/**
+	 * @brief Funkcja zwraca czy kolumna jest typu tekstowego 
+	 * Funkcja służy do sprawdzania czy kolumna jest typu tekstowego
+	 * @return true kolumna typu tekstowego
+	 * @return false kolumna jest typu liczbowego
+	 */
+	bool isText();
 };
 
 
