@@ -67,11 +67,12 @@ class Arkusz{
      * 
      * @param[in] x Szerokość tablicy nowego arkusza
      * @param[in] y Wysokość tablicy nowego arkusza
+     * @param[in] czyTekstowa Określa czy tworzony arkusz jest tekstowy czy liczbowy
      */    
     Arkusz(size_t x, size_t y, bool czyTekstowa=false);
 
     /** 
-     * \brief Wstawia określoną wartość do komórki tablicy w arkuszu.
+     * \brief Wstawia określoną wartość do komórki tekstowej tablicy w arkuszu.
      * 
      * Funkcja wstawia wartość do komórki o określonym adresie
      * 
@@ -83,7 +84,7 @@ class Arkusz{
     Wyjatki modyfikacjaWartosci(size_t x, size_t y, std::string wartosc);
 
     /** 
-     * \brief Wstawia określoną wartość do komórki tablicy w arkuszu.
+     * \brief Wstawia określoną wartość do komórki liczbowej tablicy w arkuszu.
      * 
      * Funkcja wstawia wartość do komórki o określonym adresie
      * 
@@ -110,15 +111,13 @@ class Arkusz{
     Wyjatki rozszerzArkusz(size_t x, size_t y);
     
     /**
-     * \brief Zwraca wartość wybranej komórki  
+     * \brief Zwraca wybraną komórkę  
      * 
-     * Funkcja zwraca wartość wybranej komórki... 
-     * jeśli koordynaty x lub y są poza zakresem
-     * funkcja zwróci najmniejszą możliwą wartość komórki
+     * Funkcja zwraca referencje wybranej komórki
      * 
      * @param[in] x Wybrana kolumna
      * @param[in] y Wybrany wiersz
-     * @return Wartość komórki w przeciwnym wypadku najmniejsza możliwa wartość
+     * @return Wybrana komórka
      * 
      */
     Komorka& zwrocWartosc(size_t x, size_t y);

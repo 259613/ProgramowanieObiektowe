@@ -7,6 +7,8 @@
 /*! \brief Funkcja zapisu do pliku
  *
  * Funkcja wykonuje zapis do wybranego przez nas pliku, w przypadku błędu zwraca wartość różną od 0.
+ * Początkowo wczytana tablica jest typu tekstowego, dopiero po wczytaniu wszystkich elementów jest sprawdzana możliwość tego 
+ * czy tablica jest typu liczbowego (preferowana opcja).
  * 
  * @param [in] arkusz Arkusz przeznaczony do zapisu
  * @param [in] nazwa Nazwa zapisywanego pliku

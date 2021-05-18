@@ -55,10 +55,11 @@ void wczytanie(Arkusz * arkusz);
 void zapis(Arkusz arkusz);
 
 
-/** \brief Funkcja menu od wyboru wgzględem czego wyznazcza parametry
+/** \brief Funkcja menu od wyboru względem czego wyznazcza parametry
  * 
  * Funkcja menu od wyboru atrybutu tablicy (kolumny lub wiersza)
  * która ma za wyświetlenie parametrów wybranego atrybutu.
+ * Funkcja nie wykona się dla tablic czysto tekstowych.
  *
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji wyboru parametrów
  */

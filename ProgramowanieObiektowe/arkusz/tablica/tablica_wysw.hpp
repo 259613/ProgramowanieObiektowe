@@ -14,7 +14,9 @@ void wyswietlTablica(Arkusz arkusz);
  * \brief Interfejs użytkownika wprowadzania nowej wartości.
  * 
  * Funkcja interfejsu wprowadzenia wartości do tablicy.
- * Wprowadzana wartość spoza przedziału zostanie zablokowana
+ * Wprowadzana wartość spoza przedziału zostanie zablokowana.
+ * W zależności od typu arkusza umożliwia wprowadzenie wartości
+ * tekstowej bądź liczbowej.
  * 
  * @param[in,out] arkusz arkusz która zostaje zmodyfikowany
  */
