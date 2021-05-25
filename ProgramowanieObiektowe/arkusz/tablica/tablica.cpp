@@ -7,6 +7,18 @@ Arkusz::Arkusz(size_t kolumny, size_t wiersze, bool czyTekstowa) : tekstowa(czyT
 {
 	iloscWierszy = wiersze;
 	iloscKolumn = kolumny;
+	typeTracker = new cellType[iloscKolumn];
+	cellType type = cellType::typeInt;
+
+	if (czyTekstowa)
+	{
+		type = cellType::typeString;
+	}
+
+	for (size_t i = 0; i < iloscKolumn; i++)
+	{
+		typeTracker[i] = type;
+	}
 	if (czyTekstowa)
 	{
 		tablica = tworzTablicaString(kolumny, wiersze);
@@ -33,15 +45,25 @@ Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY)
 		iloscWierszy = nowyY;
 	}
 	Tablica nowaTablica;
+	cellType * newTracker = new cellType[nowyX];
 	if (tekstowa)
 	{
-
 		nowaTablica = tworzTablicaString(nowyX, nowyY);
 	}
 	else
 	{
-
 		nowaTablica = tworzTablicaInt(nowyX, nowyY);
+	}
+	for(size_t i = 0; i < nowyX; i++){
+		if(i < iloscKolumn){
+			newTracker[i] = typeTracker[i];
+		}
+		else if(tekstowa){
+			newTracker[i] = cellType::typeString;
+		}
+		else{
+			newTracker[i] = cellType::typeInt;
+		}
 	}
 
 	for (size_t y = 0; y < iloscWierszy; y++)
@@ -64,6 +86,7 @@ Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY)
 	iloscWierszy = nowyY;
 	iloscKolumn = nowyX;
 	tablica = nowaTablica;
+	typeTracker = newTracker;
 	return Wyjatki::BRAK;
 }
 
@@ -154,4 +177,81 @@ size_t Arkusz::rozmiarY()
 bool Arkusz::czyTekstowa()
 {
 	return tekstowa;
+}
+
+void Arkusz::convertColumn(cellType type, size_t column)
+{
+	auto currentType = typeTracker[column];
+	if (currentType != type)
+	{
+
+		switch (type)
+		{
+		case cellType::typeGeneric:
+			break;
+		case cellType::typeInt:
+		{
+
+			for (size_t y = 0; y < iloscWierszy; y++)
+			{
+				auto currentCell = static_cast<stringCell &>(*tablica[y][column]);
+				delete tablica[y][column];
+				tablica[y][column] = toIntCell(currentCell);
+			}
+		}
+		case cellType::typeString:
+		{
+
+			for (size_t y = 0; y < iloscWierszy; y++)
+			{
+				auto currentCell = static_cast<intCell &>(*tablica[y][column]);
+				delete tablica[y][column];
+				tablica[y][column] = toStringCell(currentCell);
+			}
+		}
+		}
+		typeTracker[column] = type;
+	}
+}
+
+cellType Arkusz::getColumnType(size_t column)
+{
+	return typeTracker[column];
+}
+
+bool Arkusz::calculateableColumn(size_t column)
+{
+	for (size_t i = 0; i < calculateableTypesCount; i++)
+	{
+		if (typeTracker[column] == calculateableTypes[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Arkusz::hasCalculateableColumn()
+{
+	for (size_t i = 0; i < iloscKolumn; i++)
+	{
+		if (calculateableColumn(i))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+size_t Arkusz::calculateableColumnsCount()
+{
+	size_t x{};
+	for (size_t i = 0; i < iloscKolumn; i++)
+	{
+		if (calculateableColumn(i))
+		{
+			x++;
+		}
+	}
+	return x;
 }

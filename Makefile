@@ -1,7 +1,7 @@
 FLAGS = -Wall -pedantic -std=c++20
 CATALOG = ./ProgramowanieObiektowe
 
-app.out : main.o tablica.o tablica_wysw.o menu.o zapisOdczyt.o utility.o operacje.o cell.o intCell.o stringCell.o
+app.out : main.o tablica.o tablica_wysw.o menu.o zapisOdczyt.o utility.o operacje.o cell.o intCell.o stringCell.o cellConverter.o
 	g++ -o $@ $^
 	doxygen config
 	make -C latex/ -f Makefile
@@ -26,6 +26,8 @@ cell.o : ${CATALOG}/arkusz/komorka/cell.cpp
 intCell.o : ${CATALOG}/arkusz/komorka/intCell.cpp
 	g++ -c ${FLAGS} -o $@ $^
 stringCell.o : ${CATALOG}/arkusz/komorka/stringCell.cpp
+	g++ -c ${FLAGS} -o $@ $^
+cellConverter.o : ${CATALOG}/arkusz/komorka/cellConverter.cpp
 	g++ -c ${FLAGS} -o $@ $^
 clean	:  
 	echo "Czyszczenie katalogu"

@@ -3,6 +3,7 @@
 #ifndef HEADER_GUARD_CELL_
 #define HEADER_GUARD_CELL_
 #include "../../error.hpp"
+#include "cellTypes.hpp"
 #include <string>
 
 /**
@@ -75,6 +76,8 @@ public:
 	 * @return int Suma wartości komórek
 	 */
 	int operator+(int wart);
+
+	virtual ~Cell(){};
 };
 
 #endif

@@ -34,5 +34,7 @@ class stringCell : public Cell{
      * @param[in] Val umożliwia modyfikacje wartości komórki
      */
     void setValue(std::string Val);
+
+    ~stringCell(){};
 };
 #endif

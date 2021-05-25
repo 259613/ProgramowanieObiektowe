@@ -90,4 +90,12 @@ std::string parametryKolumny(Arkusz arkusz, int kolumna);
  * @param [in] wyjatek Wyjątek który zostanie przechwycony
  */
 void obslugaBledow(Wyjatki wyjatek);
+
+/**
+ * @brief Funkcja od zmiany typu kolumny w arkuszu
+ * 
+ * @param [in] arkusz Arkusz w którym jest modyfikowana kolumna
+ */
+void zmienKolumne(Arkusz *arkusz);
+
 #endif

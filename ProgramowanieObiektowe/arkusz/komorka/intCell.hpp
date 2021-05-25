@@ -39,6 +39,8 @@ public:
      * @param[in] Val umożliwia modyfikacje wartości komórki
      */
 	void setValue(int Val);
+
+	~intCell(){};
 };
 
 #endif

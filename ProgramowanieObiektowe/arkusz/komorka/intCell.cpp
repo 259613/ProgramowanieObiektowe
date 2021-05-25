@@ -2,8 +2,7 @@
 
 #include "intCell.hpp"
 #include <sstream>
-intCell::intCell(int Val) : Value(Val) { 
-    Cell(true);
+intCell::intCell(int Val) : Cell(true), Value(Val) { 
     }
 
 int intCell::getValue(){
