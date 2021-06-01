@@ -6,13 +6,14 @@
 #include <cstddef>
 #include "../../error.hpp"
 #include "../komorka/cell.hpp"
+#include "../kolumna/column.hpp"
 #include "../komorka/intCell.hpp"
 #include "../komorka/stringCell.hpp"
 #include "../komorka/cellConverter.hpp"
 /*! Definicja/alias typu  int jako typ określający komórkę */
 typedef Cell Komorka;
 /*! Definicja/alias typu  Komórka** jako Tablica komórek */
-typedef Komorka ***Tablica;
+typedef Column **Tablica;
 
 /** 
  * \brief Struktura Arkusz
@@ -25,7 +26,7 @@ class Arkusz
 	size_t iloscKolumn;	 /*! Ilość kolumn - rozmiar X */
 	size_t iloscWierszy; /*! Ilość wierszy - rozmiar Y */
 	bool tekstowa;		 /*! Określa czy tabela jest tylko typu tekstowego */
-	cellType *typeTracker;
+	cellType *typeTracker; /*! Tablica która określa typy kolumn */
 
 public:
 	/** 
@@ -37,29 +38,7 @@ public:
 	 * @param[in] rozmiarY Wysokość nowej tablicy 
 	 * @return Nową tabilce dwuwymiarową z komórkami liczbowymi o wyznaczonych rozmiarach
 	 */
-	static Tablica tworzTablica(size_t kolumny, size_t wiersze);
-
-	/** 
-	 * \brief Tworzy nową dwuwymiarową tablice typu komórek Int.
-	 *
-	 * Funkcja generujaca tablicę tekstową o określonym rozmiarze
-	 * 
-	 * @param[in] rozmiarX Szerokość nowej tablicy
-	 * @param[in] rozmiarY Wysokość nowej tablicy 
-	 * @return Nową tabilce dwuwymiarową z komórkami liczbowymi o wyznaczonych rozmiarach
-	 */
-	static Tablica tworzTablicaInt(size_t kolumny, size_t wiersze);
-
-	/** 
-	 * \brief Tworzy nową dwuwymiarową tablice typu tekstowego.
-	 *
-	 * Funkcja generujaca tablicę tekstową o określonym rozmiarze
-	 * 
-	 * @param[in] rozmiarX Szerokość nowej tablicy
-	 * @param[in] rozmiarY Wysokość nowej tablicy 
-	 * @return Nową tabilce dwuwymiarową z komórkami tekstowymi o wyznaczonych rozmiarach
-	 */
-	static Tablica tworzTablicaString(size_t kolumny, size_t wiersze);
+	static Tablica tworzTablica(size_t kolumny, size_t wiersze, cellType typ);
 
 	/**
 	 * \brief Konstruktor tworzący akrusz z tablicą o wyznaczonym rozmiarze i wybranym typie

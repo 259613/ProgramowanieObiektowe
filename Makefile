@@ -1,7 +1,7 @@
-FLAGS = -Wall -pedantic -std=c++20
+FLAGS = -Wall -pedantic -std=c++20 -g
 CATALOG = ./ProgramowanieObiektowe
 
-app.out : main.o tablica.o tablica_wysw.o menu.o zapisOdczyt.o utility.o operacje.o cell.o intCell.o stringCell.o cellConverter.o
+app.out : main.o tablica.o tablica_wysw.o menu.o zapisOdczyt.o utility.o operacje.o cell.o intCell.o stringCell.o cellConverter.o column.o
 	g++ -o $@ $^
 	doxygen config
 	make -C latex/ -f Makefile
@@ -20,6 +20,8 @@ zapisOdczyt.o : ${CATALOG}/io/zapisOdczyt.cpp
 utility.o : ${CATALOG}/utility/utility.cpp
 	g++ -c ${FLAGS} -o $@ $^
 operacje.o : ${CATALOG}/operacje/operacje.cpp
+	g++ -c ${FLAGS} -o $@ $^
+column.o : ${CATALOG}/arkusz/kolumna/column.cpp
 	g++ -c ${FLAGS} -o $@ $^
 cell.o : ${CATALOG}/arkusz/komorka/cell.cpp
 	g++ -c ${FLAGS} -o $@ $^

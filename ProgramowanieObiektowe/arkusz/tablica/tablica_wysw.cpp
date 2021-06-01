@@ -20,6 +20,7 @@ void wyswietlTablica(Arkusz arkusz)
         for (size_t x = 0; x < arkusz.rozmiarX(); x++)
         {
             cout << arkusz.zwrocWartosc(x, y).toString() << '\t';
+             cout << arkusz.zwrocWartosc(x, y).getValue() << '\t';
         }
         cout << endl;
     }

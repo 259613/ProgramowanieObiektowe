@@ -2,7 +2,8 @@
 
 #include "tablica.hpp"
 #include <limits>
-
+#include <utility>
+#include <iostream>
 Arkusz::Arkusz(size_t kolumny, size_t wiersze, bool czyTekstowa) : tekstowa(czyTekstowa)
 {
 	iloscWierszy = wiersze;
@@ -21,11 +22,11 @@ Arkusz::Arkusz(size_t kolumny, size_t wiersze, bool czyTekstowa) : tekstowa(czyT
 	}
 	if (czyTekstowa)
 	{
-		tablica = tworzTablicaString(kolumny, wiersze);
+		tablica = tworzTablica(kolumny, wiersze, cellType::typeString);
 	}
 	else
 	{
-		tablica = tworzTablicaInt(kolumny, wiersze);
+		tablica = tworzTablica(kolumny, wiersze,cellType::typeInt);
 	}
 }
 
@@ -48,11 +49,11 @@ Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY)
 	cellType * newTracker = new cellType[nowyX];
 	if (tekstowa)
 	{
-		nowaTablica = tworzTablicaString(nowyX, nowyY);
+		nowaTablica = tworzTablica(nowyX, nowyY, cellType::typeString);
 	}
 	else
 	{
-		nowaTablica = tworzTablicaInt(nowyX, nowyY);
+		nowaTablica = tworzTablica(nowyX, nowyY, cellType::typeInt);
 	}
 	for(size_t i = 0; i < nowyX; i++){
 		if(i < iloscKolumn){
@@ -66,21 +67,12 @@ Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY)
 		}
 	}
 
-	for (size_t y = 0; y < iloscWierszy; y++)
-	{
 		for (size_t x = 0; x < iloscKolumn; x++)
 		{
-			if (tekstowa)
-			{
-				static_cast<stringCell &>(*nowaTablica[y][x]).setValue((*tablica[y][x]).toString());
-			}
-			else
-			{
-				static_cast<intCell &>(*nowaTablica[y][x]).setValue((*tablica[y][x]).getValue());
-			}
+			nowaTablica[x] = tablica[x];
+			nowaTablica[x]->expandColumn(nowyY);
 		}
-		delete[](tablica)[y];
-	}
+
 
 	delete[](tablica);
 	iloscWierszy = nowyY;
@@ -90,45 +82,12 @@ Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY)
 	return Wyjatki::BRAK;
 }
 
-Tablica Arkusz::tworzTablica(size_t rozmiarX, size_t rozmiarY)
+Tablica Arkusz::tworzTablica(size_t rozmiarX, size_t rozmiarY, cellType typ)
 {
-	Tablica tablica = new Cell **[rozmiarY];
 
-	int licznik = rozmiarY;
-
-	while (licznik)
-	{
-		tablica[--licznik] = new Cell *[rozmiarX];
-	}
-
-	return tablica;
-}
-
-Tablica Arkusz::tworzTablicaInt(size_t rozmiarX, size_t rozmiarY)
-{
-	Tablica tablica = tworzTablica(rozmiarX, rozmiarY);
-
-	for (size_t i = 0; i < rozmiarY; i++)
-	{
-		for (size_t j = 0; j < rozmiarX; j++)
-		{
-			tablica[i][j] = new intCell(0);
-		}
-	}
-
-	return tablica;
-}
-
-Tablica Arkusz::tworzTablicaString(size_t rozmiarX, size_t rozmiarY)
-{
-	Tablica tablica = tworzTablica(rozmiarX, rozmiarY);
-
-	for (size_t i = 0; i < rozmiarY; i++)
-	{
-		for (size_t j = 0; j < rozmiarX; j++)
-		{
-			tablica[i][j] = new stringCell("x");
-		}
+	Tablica tablica = new Column*[rozmiarX];
+	for(int x; x<rozmiarX; x++){
+		tablica[x] = new Column(rozmiarY, typ);
 	}
 
 	return tablica;
@@ -141,7 +100,7 @@ Wyjatki Arkusz::modyfikacjaWartosci(size_t x, size_t y, std::string wartosc)
 		return Wyjatki::TABLICA_ZAKR;
 	}
 
-	static_cast<stringCell &>((*tablica[y][x])).setValue(wartosc);
+	static_cast<stringCell &>((tablica[y]->getElement(x))).setValue(wartosc);
 	return Wyjatki::BRAK;
 }
 
@@ -152,7 +111,7 @@ Wyjatki Arkusz::modyfikacjaWartosci(size_t x, size_t y, int wartosc)
 		return Wyjatki::TABLICA_ZAKR;
 	}
 
-	static_cast<intCell &>((*tablica[y][x])).setValue(wartosc);
+	static_cast<intCell &>((tablica[y]->getElement(y))).setValue(wartosc);
 	return Wyjatki::BRAK;
 }
 
@@ -161,7 +120,7 @@ Komorka &Arkusz::zwrocWartosc(size_t x, size_t y)
 	/*if(x > iloscKolumn || y > iloscWierszy){
 		
 	}*/
-	return *(tablica[y][x]);
+	return tablica[x]->getElement(y);
 }
 
 size_t Arkusz::rozmiarX()
@@ -182,6 +141,7 @@ bool Arkusz::czyTekstowa()
 void Arkusz::convertColumn(cellType type, size_t column)
 {
 	auto currentType = typeTracker[column];
+	
 	if (currentType != type)
 	{
 
@@ -192,22 +152,27 @@ void Arkusz::convertColumn(cellType type, size_t column)
 		case cellType::typeInt:
 		{
 
-			for (size_t y = 0; y < iloscWierszy; y++)
-			{
-				auto currentCell = static_cast<stringCell &>(*tablica[y][column]);
-				delete tablica[y][column];
-				tablica[y][column] = toIntCell(currentCell);
-			}
+			// for (size_t y = 0; y < iloscWierszy; y++)
+			// {
+			// 	auto currentCell = static_cast<stringCell &>(*tablica[y][column]);
+			// 	intCell* newCell = toIntCell(currentCell);
+			// 	//std::move(tablica[y][column]);
+			// 	delete tablica[y][column];
+			// 	//tablica[y][column] = newCell;
+			// 	tablica[y][column] = new intCell(10);
+			// }
 		}
 		case cellType::typeString:
 		{
 
-			for (size_t y = 0; y < iloscWierszy; y++)
-			{
-				auto currentCell = static_cast<intCell &>(*tablica[y][column]);
-				delete tablica[y][column];
-				tablica[y][column] = toStringCell(currentCell);
-			}
+			// for (size_t y = 0; y < iloscWierszy; y++)
+			// {
+			// 	auto currentCell = static_cast<intCell &>(*tablica[y][column]);
+			// 	stringCell* newCell = toStringCell(currentCell);
+			// 	//std::move(tablica[y][column]);
+			// 	delete (tablica[y][column]);
+			// 	tablica[y][column] = newCell;
+			// }
 		}
 		}
 		typeTracker[column] = type;
