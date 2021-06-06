@@ -2,62 +2,134 @@
 
 #include <fstream>
 #include "zapisOdczyt.hpp"
-
+#include <stdexcept>
+#include "../arkusz/komorka/intCell.hpp"
+#include "../arkusz/komorka/stringCell.hpp"
 using namespace std;
 
-Wyjatki zapisPliku(Arkusz arkusz, string nazwa){
-    ofstream plik(nazwa);
-    size_t iloscKolumn = arkusz.rozmiarX();
-    size_t iloscWierszy= arkusz.rozmiarY();
-    if(plik.good()){
-        plik << iloscWierszy << endl;
-        plik << iloscKolumn << endl;
-        for(size_t y = 0; y < iloscWierszy; y++){
-            for(size_t x = 0; x < iloscKolumn; x++){
-                plik << arkusz.zwrocWartosc(x,y) << (x<iloscKolumn-1 ? ", " : "");
-            }
-            if(y < iloscWierszy - 1){
-                plik << endl;
-            }
-        }
-    }
 
-    else{
-        return Wyjatki::PLIK_ACCESS;
-    }
-    
-    plik.close();
-    return Wyjatki::BRAK;
+
+void saveFile(Sheet sheet, std::string fileName)
+{
+	ofstream file(fileName);
+	if(file.good())
+	{
+		file << sheet.getWidth() << endl << sheet.getHeight() << endl;
+
+		for(int i = 0; i < sheet.getWidth(); i++)
+		{
+			file << static_cast<int>(sheet[i].getType()) << "\t";
+		}
+		file << endl;
+		for(int y = 0; y < sheet.getHeight(); y++)
+		{
+			for(int x = 0; x < sheet.getWidth(); x++)
+			{
+				string value{};
+				switch(sheet[x].getType())
+				{
+
+					case CellType::StringCell:{
+						try{
+							value = dynamic_cast<StringCell&>(sheet[x][y])
+									.getStringValue();
+						}
+						catch(...)
+						{
+							value = "?";
+						}
+						break;
+					}
+
+					case CellType::IntCell:{
+						try{
+							value = to_string(dynamic_cast<IntCell&>(sheet[x][y])
+											  .getIntValue());
+						}
+						catch(...) {
+							value = "0";
+						}
+						break;
+					}
+					default: {
+						value = "0";
+						break;
+					}
+				}
+				file << value << (x < sheet.getWidth()-1 ? ", " : "");
+			}
+			if(y < sheet.getHeight() - 1){
+				file << endl;
+			}
+		}
+	}
+	else{
+		throw BadFileException();
+	}
 }
 
-Wyjatki wczytajPlik(Arkusz * arkusz, string nazwa){
-    ifstream plik(nazwa);
-    if(plik.good()){
-        size_t rozmiarWczytY{}, rozmiarWczytX{};
-        plik >> rozmiarWczytY;
-        plik >> rozmiarWczytX;
-        
-        if(rozmiarWczytX < 1 || rozmiarWczytY < 1){
-            return Wyjatki::PLIK_ROZMIAR;
-        }
+void loadFile(Sheet* sheet, std::string fileName)
+{
+	ifstream file(fileName);
+	if(file.good()){
 
-        *arkusz = Arkusz(rozmiarWczytX, rozmiarWczytY); 
-        for(size_t y = 0; y < rozmiarWczytY; y++){
-            for(size_t x = 0; x < (rozmiarWczytX) - 1; x++){
-                string wartosc;
-                getline(plik, wartosc, ',');
-                (*arkusz).modyfikacjaWartosci(x,y, stoi(wartosc));
-            }
-            Komorka wart;
-            plik >> wart;
-            (*arkusz).modyfikacjaWartosci((rozmiarWczytX)-1,y,wart);
-        }
-    }
-    
-    else{
-        return Wyjatki::PLIK_ACCESS;
-    }
-    
-    plik.close();
-    return Wyjatki::BRAK;
+		size_t width, height;
+		file >> width >> height;
+
+		if(width <= 0){
+			throw bad_array_new_length();
+		}
+
+		int tmp;
+		CellType* types = new CellType[width];
+		for(int i = 0; i < width; i++){
+			file >> tmp;
+			switch(tmp)
+			{
+				case 0:
+				{
+					types[i] = CellType::StringCell;
+					break;
+				}
+				case 1:
+				{
+					types[i] = CellType::IntCell;
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
+		}
+
+		Sheet newSheet(width, height, types);
+
+		string tmpText{};
+		file.ignore(10,'\n');
+
+		for(int y = 0; y < height; y++){
+			for(int x = 0; x < width; x++){
+
+				getline(file,tmpText,
+						(x < width-1 ? ',' : '\n' ));
+
+				if(types[x]==CellType::StringCell){
+					newSheet[x][y].setValue(&tmpText);
+				}
+
+				else if(types[x]==CellType::IntCell){
+					tmp = stoi(tmpText);
+					newSheet[x][y].setValue(&tmp);
+				}
+
+			}
+
+		}
+		*sheet = newSheet;
+	}
+
+	else{
+		throw BadFileException();
+	}
 }

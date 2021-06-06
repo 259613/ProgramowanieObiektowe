@@ -6,105 +6,24 @@
 
 #include <cstddef>
 #include "../../error.hpp"
+#include "../kolumna/column.hpp"
 
-/*! Definicja/alias typu  int jako typ określający komórkę */
-typedef int Komorka;
-/*! Definicja/alias typu  Komórka** jako Tablica komórek */
-typedef Komorka ** Tablica;
+class Sheet{
+	Column** array;
+	size_t width;
+	size_t height;
+protected:
+	static Column** createColumnArray(size_t width, size_t height, CellType* types);
+public:
+	Sheet(size_t width, size_t height, CellType* types);
 
+	size_t getWidth();
+	size_t getHeight();
 
-/** 
- * \brief Struktura Arkusz
- * Struktura Arkusz przechowywujaca tablicę i jej rozmiar
- */
-class Arkusz{
+	Column& getColumn(size_t x);
+	Column& operator[](size_t x);
 
-    Tablica tablica; /*!< Tablica dwuwymiarowa */  
-    size_t iloscKolumn; /*!< Ilość kolumn - rozmiar X */  
-    size_t iloscWierszy; /*!< Ilość wierszy - rozmiar Y */
-
-    public:
-    
-    /** 
-     * \brief Tworzy nową dwuwymiarową tablice.
-     *
-     * Funkcja generujaca tablicę o określonym rozmiarze
-     * 
-     * @param[in] rozmiarX Szerokość nowej tablicy
-     * @param[in] rozmiarY Wysokość nowej tablicy 
-     * @return Nową tabilce dwuwymiarową o wyznaczonych rozmiarach
-     */
-    static Tablica tworzTablica(size_t kolumny, size_t wiersze);
-
-    /**
-     * \brief Konstruktor tworzący akrusz z tablicą o wyznaczonym rozmiarze
-     * Konstruktor tworzący arkusz z tablicą o wyznaczonej ilości kolumn i wierszy
-     * 
-     * @param[in] x Szerokość tablicy nowego arkusza
-     * @param[in] y Wysokość tablicy nowego arkusza
-     */    
-    Arkusz(size_t x, size_t y);
-
-    /** 
-     * \brief Wstawia określoną wartość do komórki tablicy w arkuszu.
-     * 
-     * Funkcja wstawia wartość do komórki o określonym adresie
-     * 
-     * @param[in] x określona kolumna
-     * @param[in] y określony wiersz
-     * @param[in] wart wprowadzana wartość
-     * @return Kod błędu, ::BRAK - Brak błędu, ::TABLICA_ZAKR - indeks spoza zakresu tablicy
-     */
-    Wyjatki modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc);
-
-    /** 
-     * \brief Modyfikacja rozmiaru tablicy.
-     * 
-     * Funkcja modyfikująca rozmiar arkusza,
-     * wartości modyfikowanego arkuszu zostają zachowane 
-     * wraz z rozszerzaniem bądź redukcją rozmiaru 
-     * (przy redukcji możliwa utrata kolumn/wierszy)
-     * 
-     * @param[in] nowyX nowa szerokość tablicy
-     * @param[in] nowyY nowa wysokość tablicy
-     * @return Kod błędu, ::BRAK - Brak błędu, ::TABLICA_SIZE - Niepoprawny rozmiar tablicy
-     */
-    Wyjatki rozszerzArkusz(size_t x, size_t y);
-    
-    /**
-     * \brief Zwraca wartość wybranej komórki  
-     * 
-     * Funkcja zwraca wartość wybranej komórki... 
-     * jeśli koordynaty x lub y są poza zakresem
-     * funkcja zwróci najmniejszą możliwą wartość komórki
-     * 
-     * @param[in] x Wybrana kolumna
-     * @param[in] y Wybrany wiersz
-     * @return Wartość komórki w przeciwnym wypadku najmniejsza możliwa wartość
-     * 
-     */
-    Komorka zwrocWartosc(size_t x, size_t y);
-
-
-    /**
-     * \brief Getter ilości kolumn
-     * 
-     * Funkja zwraca ilość kolumn danego arkusza
-     * 
-     * @return Ilość kolumn arkusza
-     */
-    size_t rozmiarX();
-
-    /**
-     * \brief Getter ilości wierszy
-     * 
-     * Funkja zwraca ilość wierszy danego arkusza
-     * 
-     * @return Ilość wierszy arkusza
-     */
-    size_t rozmiarY();
-
+	void resize(size_t x, size_t y);
 };
-
 
 #endif

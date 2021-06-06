@@ -2,12 +2,20 @@
 
 #include "stringCell.hpp"
 
-stringCell::stringCell(std::string Val) : Value(Val) {}
-
-std::string stringCell::toString(){
-    return Value;
+StringCell::StringCell(std::string value)
+{
+	this->value = value;
 }
 
-void stringCell::setValue(std::string Val){
-    Value = Val;
+void* StringCell::getValue()
+{
+	return &value;
+}
+
+void StringCell::setValue(void* value){
+	this->value = *((std::string*)value);
+}
+
+std::string StringCell::getStringValue(){
+	return value;
 }

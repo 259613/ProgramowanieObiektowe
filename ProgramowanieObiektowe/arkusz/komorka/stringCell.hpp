@@ -2,37 +2,23 @@
 
 #ifndef HEADER_GUARD_STRINGCELL_
 #define HEADER_GUARD_STRINGCELL_
+#include <string>
 #include "cell.hpp"
 
-/**
- * @brief Klasa komórki tekstowej
- * 
- * Klasa komórki posiadającej wartość typu string
- * 
- */
-class stringCell : public Cell{
-    /**
-     * @brief Wartość komórki
-     * Wartość string komórki
-     */
-    std::string Value;
+class StringCell: public Cell{
+	std::string value;
+public:
+	StringCell(std::string value = "?");
 
-    public:
+	void* getValue();
+	void setValue(void* value);
 
-    /**
-     * @brief Konstruktor komórki tekstowej
-     * Konstruktor komórki z wartością początkową 
-     * @param[in] Val Wartość początkowa komórki
-     */
-    stringCell(std::string Val);
-    
-    std::string  toString();
-    
-    /**
-     * @brief setter wartości komórki
-     * Setter umożliwiający ustawienie wartości tekstowej w komórce
-     * @param[in] Val umożliwia modyfikacje wartości komórki
-     */
-    void setValue(std::string Val);
+	/**
+	 * @brief getStringValue Metoda od uzyskiwania wartości string
+	 * Metoda służy do bezpośredniego uzyskiwania wartości tekstowej komórki bez potrzeby rzutowania i wyłuskiwania
+	 * @return wartość string komórki
+	 */
+	std::string getStringValue();
 };
+
 #endif

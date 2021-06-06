@@ -2,9 +2,9 @@
 #define HEADER_GUARD
 
 /// @file
-#include "../arkusz/tablica/tablica.hpp"
 #include <string>
 #include "../error.hpp"
+#include "../arkusz/tablica/tablica.hpp"
 
 /** 
  * \brief Funkcja kontrolująca działanie programu.
@@ -28,7 +28,7 @@ void generujMenu();
  * 
  * @return Nowy Arkusz do wykorzystywania w programie 
  */
-Arkusz tworzArkusz();
+Sheet tworzArkusz();
 
 /** 
  * \brief Funkcja modyfikująca rozmiar arkusza.
@@ -37,14 +37,14 @@ Arkusz tworzArkusz();
  * 
  * @param[in,out] arkusz Arkusz przeznaczony do modyfikacji rozmiaru
  */
-void rozszerzArkusz(Arkusz * arkusz);
+void rozszerzArkusz(Sheet * arkusz);
 
 /** \brief Funkcja wczytywania arkusza
  * Funkcja menu od wczytywania arkusza, ma za zadanie opakowanie funkcji IO wczytajPlik
  * @param [in,out] arkusz Arkusz do którego mogą być wczytane elementy
  * 
  */
-void wczytanie(Arkusz * arkusz);
+void wczytanie(Sheet* arkusz);
 
 /** \brief Funkcja menu od zapisu
  * 
@@ -52,7 +52,7 @@ void wczytanie(Arkusz * arkusz);
  *
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji zapisującej do pliku
  */
-void zapis(Arkusz arkusz);
+void zapis(Sheet arkusz);
 
 
 /** \brief Funkcja menu od wyboru wgzględem czego wyznazcza parametry
@@ -62,7 +62,7 @@ void zapis(Arkusz arkusz);
  *
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji wyboru parametrów
  */
-void parametry(Arkusz arkusz);
+//void parametry(Arkusz arkusz);
 
 
 /** \brief Funkcja od wyznaczania parametrów wiersza arkusza
@@ -70,18 +70,18 @@ void parametry(Arkusz arkusz);
  * Funkcja zwraca w postaci tekstowej wszystkie parametry wybranego wiersza
  *
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji obliczania parametrów
- * @param [in] wiersz Wiersz względem której zostaną obliczone parametry
+ * @param [in] wiersz Wiersz względem której zostaną obliczone parametry
  */
-std::string parametryWiersza(Arkusz arkusz, int wiersz);
+//std::string parametryWiersza(Arkusz arkusz, int wiersz);
 
 /** \brief Funkcja od wyznaczania parametrów kolumny arkusza
  * 
  * Funkcja zwraca w postaci tekstowej wszystkie parametry wybranej kolumny
  *
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji obliczania parametrów
- * @param [in] kolumna Kolumna względem której zostaną obliczone parametry
+ * @param [in] kolumna Kolumna względem której zostaną obliczone parametry
  */
-std::string parametryKolumny(Arkusz arkusz, int kolumna);
+//std::string parametryKolumny(Arkusz arkusz, int kolumna);
 
 /** \brief Funkcja zajmująca się "Przechwytywaniem wyjątków" i ich wypisywaniem
  * Wypisuje napotkany "Wyjątek", Nie wypisze nic jeśli wyjątek ma wartość ::BRAK
@@ -89,4 +89,6 @@ std::string parametryKolumny(Arkusz arkusz, int kolumna);
  * @param [in] wyjatek Wyjątek który zostanie przechwycony
  */
 void obslugaBledow(Wyjatki wyjatek);
+
+void wprowadzWartosc(Sheet * arkusz);
 #endif

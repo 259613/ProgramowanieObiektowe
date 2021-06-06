@@ -1,3 +1,4 @@
+///@file
 #ifndef HEADER_GUARD_UTIL
 #define HEADER_GUARD_UTIL
 #include <limits>

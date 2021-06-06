@@ -2,73 +2,85 @@
 
 #include "tablica.hpp"
 #include <limits>
+#include <stdexcept>
 
-Arkusz::Arkusz(size_t kolumny, size_t wiersze){
-    iloscWierszy = wiersze;
-    iloscKolumn = kolumny;
-    tablica = tworzTablica(kolumny, wiersze);
+
+Column** Sheet::createColumnArray(size_t width, size_t height, CellType* types)
+{
+	if(width <= 0){
+		throw std::bad_array_new_length();
+	}
+	Column** newArray = new Column*[width];
+	for(int i = 0; i < width; i++){
+		newArray[i] = new Column(height, types[i]);
+	}
+	return newArray;
 }
 
-Wyjatki Arkusz::rozszerzArkusz(size_t nowyX, size_t nowyY){
-    if(nowyX < 1 || nowyY < 1){
-        return Wyjatki::TABLICA_SIZE;
-    }
-
-    if(iloscKolumn > nowyX){
-        iloscKolumn = nowyX;
-    }
-    if(iloscWierszy > nowyY){
-        iloscWierszy = nowyY;
-    }
-
-    Tablica nowaTablica = tworzTablica(nowyX, nowyY);
-
-    for(size_t y = 0; y < iloscWierszy; y++){
-        for(size_t x = 0; x < iloscKolumn; x++){
-            nowaTablica[y][x] = tablica[y][x];
-        }
-        delete [] (tablica)[y];
-    }
-
-    delete [](tablica);
-    iloscWierszy = nowyY;
-    iloscKolumn = nowyX;
-    tablica = nowaTablica;
-    return Wyjatki::BRAK;
+Sheet::Sheet(size_t width, size_t height, CellType* types) :
+	width(width), height(height)
+{
+	array = createColumnArray(width,height,types);
 }
 
-Tablica Arkusz::tworzTablica(size_t rozmiarX, size_t rozmiarY){
-    Tablica tablica = new int*[rozmiarY];
-
-    int licznik = rozmiarY;
-
-    while(licznik){
-        tablica[--licznik] = new int[rozmiarX]();
-    }
-
-    return tablica;
+size_t Sheet::getWidth()
+{
+	return width;
 }
 
-Wyjatki Arkusz::modyfikacjaWartosci(size_t x, size_t y, Komorka wartosc){
-    if(x > iloscKolumn || y > iloscWierszy){
-        return Wyjatki::TABLICA_ZAKR;
-    }
-
-    tablica[y][x] = wartosc;
-    return Wyjatki::BRAK;
+size_t Sheet::getHeight(){
+	return height;
 }
 
-Komorka Arkusz::zwrocWartosc(size_t x, size_t y){
-    if(x > iloscKolumn || y > iloscWierszy){
-        return std::numeric_limits<Komorka>::min();
-    }
-    return tablica[y][x];
+Column& Sheet::getColumn(size_t x)
+{
+	if(x < width){
+		return *(array[x]);
+	}
+	throw std::out_of_range("Element poza zakresem tablicy");
 }
 
-size_t Arkusz::rozmiarX(){
-    return iloscKolumn;
+Column& Sheet::operator[](size_t x){
+	return getColumn(x);
 }
 
-size_t Arkusz::rozmiarY(){
-    return iloscWierszy;
+//void Sheet::resize(size_t x, size_t y)
+//{
+
+//	if(x < width){
+//		width = x;
+//	}
+//	auto types = new CellType[x];
+//	for(int i = 0; i < x; i ++){
+//		if(i < width){
+//			types[i] = array[i]->getType();
+//		}
+//		else{
+//			types[i] = CellType::IntCell;
+//		}
+//	}
+
+//	auto newArray = createColumnArray(x,y,types);
+//	delete[] types;
+//	delete[] array;
+
+//	array = newArray;
+//}
+
+void Sheet::resize(size_t x, size_t y){
+
+	Column** newArray = new Column*[x];
+	for(int i = 0; i < x; i++){
+		if(i < width){
+			newArray[i] = array[i];
+			(*(newArray[i])).resize(y);
+		}
+		else{
+			newArray[i] = new Column(y, CellType::IntCell);
+		}
+	}
+	delete[] array;
+	array = newArray;
+	width = x;
+	height = y;
 }

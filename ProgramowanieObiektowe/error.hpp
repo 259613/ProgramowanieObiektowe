@@ -1,6 +1,7 @@
 /// @file
 #ifndef HEADER_GUARD_ERROR_
 #define HEADER_GUARD_ERROR_
+#include <stdexcept>
 /** \brief Wyjątki występujące w programie
  * Typ wyliczeniowy który zawiera wszystkie występujące wyjątki
  */
@@ -17,5 +18,12 @@ enum class Wyjatki : unsigned int{
 
 };
 
+struct BadFileException : public std::exception
+{
+	const char * what() const throw()
+	{
+		return "Brak dostępu do pliku lub nie istnieje";
+	}
+};
 
 #endif

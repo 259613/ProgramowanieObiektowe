@@ -1,3 +1,4 @@
+///@file
 #ifndef HEADER_GUARD_OPERACJE_
 #define HEADER_GUARD_OPERACJE_
 
@@ -12,7 +13,7 @@
  * @return Zwraca wartość maksymalną wiersza
  *
  */
-int maxWiersz(Arkusz arkusz, size_t wiersz);
+//int maxWiersz(Arkusz arkusz, size_t wiersz);
 
 /*! \brief Funkcja szukania minimalnej wartości wiersza
  *
@@ -23,7 +24,7 @@ int maxWiersz(Arkusz arkusz, size_t wiersz);
  * @return Zwraca wartość najmniejszą wiersza
  *
  */
-int minWiersz(Arkusz arkusz, size_t wiersz);
+//int minWiersz(Arkusz arkusz, size_t wiersz);
 
 /*! \brief Funkcja licząca sumę elementów wiersza
  *
@@ -34,7 +35,7 @@ int minWiersz(Arkusz arkusz, size_t wiersz);
  * @return Zwraca sumę wszystkich elementów wiersza
  *
  */
-int sumaWiersz(Arkusz arkusz, size_t wiersz);
+//int sumaWiersz(Arkusz arkusz, size_t wiersz);
 
 
 /*! \brief Funkcja szukania maksymalnej wartości kolumny
@@ -46,7 +47,7 @@ int sumaWiersz(Arkusz arkusz, size_t wiersz);
  * @return Zwraca wartość największą kolumny
  *
  */
-int maxKolumna(Arkusz arkusz, size_t kolumna);
+//int maxKolumna(Arkusz arkusz, size_t kolumna);
 
 /*! \brief Funkcja szukania minimalnej wartości kolumny
  *
@@ -57,7 +58,7 @@ int maxKolumna(Arkusz arkusz, size_t kolumna);
  * @return Zwraca wartość najmniejszą kolumny
  *
  */
-int minKolumna(Arkusz arkusz, size_t kolumna);
+//int minKolumna(Arkusz arkusz, size_t kolumna);
 
 /*! \brief Funkcja licząca sumę elementów kolumny
  *
@@ -68,6 +69,6 @@ int minKolumna(Arkusz arkusz, size_t kolumna);
  * @return Zwraca sumę wszystkich elementów kolumny
  *
  */
-int sumaKolumna(Arkusz arkusz, size_t kolumna);
+//int sumaKolumna(Arkusz arkusz, size_t kolumna);
 
 #endif
