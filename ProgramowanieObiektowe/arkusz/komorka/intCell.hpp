@@ -7,6 +7,12 @@
 class IntCell: public Cell{
 	int value;
 public:
+	/**
+	 * @brief IntCell Konstruktor domyślny z opcjonalnym parametrem
+	 * Konstruktor umożliwiający określenie początkowej wartości komórki
+	 *
+	 * @param[in] value Wartość początkowa komórki
+	 */
 	IntCell(int value = 0);
 	void* getValue();
 	void setValue(void* value);

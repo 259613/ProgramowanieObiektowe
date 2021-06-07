@@ -55,6 +55,53 @@ CellType Column::getType()
 	return type;
 }
 
+Cell** Column::begin()
+{
+	return cellArray;
+}
+
+Cell** Column::end()
+{
+	return cellArray+height;
+}
+
+void Column::changeType(CellType newType)
+{
+	if(type==newType){
+		return;
+	}
+	else{
+		auto newCellArray = generateCellArray(height, newType);
+		for(int i = 0; i < height; i++){
+
+			switch(newType){
+				case CellType::IntCell:{
+					auto oldCell = dynamic_cast<StringCell*>(cellArray[i]);
+					std::string oldValue = (*oldCell).getStringValue();
+					int newValue{};
+					try{
+						newValue = std::stoi(oldValue);
+					}
+					catch(...){}
+					newCellArray[i]->setValue(&newValue);
+					break;
+				}
+				case CellType::StringCell:{
+					auto oldCell = dynamic_cast<IntCell*>(cellArray[i]);
+					std::string newValue = std::to_string(oldCell->getIntValue());
+					newCellArray[i]->setValue(&newValue);
+					break;
+				}
+				default:{
+					break;
+				}
+			}
+		}
+		cellArray = newCellArray;
+		type = newType;
+	}
+}
+
 void Column::resize(size_t newHeight)
 {
 	if(newHeight== height){

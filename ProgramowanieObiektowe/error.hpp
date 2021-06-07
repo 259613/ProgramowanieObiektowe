@@ -18,6 +18,10 @@ enum class Wyjatki : unsigned int{
 
 };
 
+/**
+ * @brief Wyjątek wyrzucany w przypadku braku dostępu
+ * Wyjątek jest wyrzucany gdy użytkownik nie ma dostęplu do pliku lub nieistnieje (odczyt)
+ */
 struct BadFileException : public std::exception
 {
 	const char * what() const throw()

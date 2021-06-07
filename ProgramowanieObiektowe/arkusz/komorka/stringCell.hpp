@@ -8,6 +8,12 @@
 class StringCell: public Cell{
 	std::string value;
 public:
+	/**
+	 * @brief StringCell Konstruktor domyślny z opcjonalnym parametrem
+	 * Konstruktor umożliwiający określenie początkowej wartości komórki
+	 *
+	 * @param[in] value Wartość początkowa komórki
+	 */
 	StringCell(std::string value = "?");
 
 	void* getValue();

@@ -35,6 +35,8 @@ app
 # Doxygen generated files 
 latex
 html
+*.tex
+*.sty
 
 # Spreadsheet csv saves
 *.csv
