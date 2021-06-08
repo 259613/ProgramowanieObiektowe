@@ -8,8 +8,8 @@
  *
  * Funkcja przeszukuje cały wiersz celem określenia największej wprowadzonej wartości
  * 
- * @param [in] arkusz Arkusz przeznaczony do obliczania parametru
- * @param [in] wiersz Wiersz względem którego obliczamy parametr
+ * @param [in] sheet Arkusz przeznaczony do obliczania parametru
+ * @param [in] row Wiersz względem którego obliczamy parametr
  * @return Zwraca wartość maksymalną wiersza
  *
  */
@@ -19,8 +19,8 @@ int maxWiersz(Sheet sheet, size_t row);
  *
  * Funkcja przeszukuje cały wiersz celem określenia najmniejszej wprowadzonej wartości
  * 
- * @param [in] arkusz Arkusz przeznaczony do obliczania parametru
- * @param [in] wiersz Wiersz względem którego obliczamy parametr
+ * @param [in] sheet Arkusz przeznaczony do obliczania parametru
+ * @param [in] row Wiersz względem którego obliczamy parametr
  * @return Zwraca wartość najmniejszą wiersza
  *
  */
@@ -30,13 +30,20 @@ int minWiersz(Sheet sheet, size_t row);
  *
  * Funkcja zwraca sumę całego wiersza
  * 
- * @param [in] arkusz Arkusz przeznaczony do obliczania parametru
- * @param [in] wiersz Wiersz względem którego obliczamy parametr
+ * @param [in] sheet Arkusz przeznaczony do obliczania parametru
+ * @param [in] row Wiersz względem którego obliczamy parametr
  * @return Zwraca sumę wszystkich elementów wiersza
  *
  */
 int sumaWiersz(Sheet sheet, size_t row);
 
+/**
+ * @brief countCalculateableRow Liczy ilość kolumn obliczalnych
+ * Liczy ile jest kolumn które mogą być wykorzystywane przy obliczeniach
+ * @param sheet Arkusz którego elementy będą liczone
+ * @return liczba kolumn typów obliczalnych
+ */
+int countCalculateableColumns(Sheet sheet);
 
 /*! \brief Funkcja szukania maksymalnej wartości kolumny
  *

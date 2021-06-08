@@ -126,3 +126,12 @@ void sortKolumna(Column *column, bool descending){
 							 > (*(std::string*)y->getValue())) ^ !descending; } );
 	}
 }
+
+int countCalculateableColumns(Sheet sheet)
+{
+	int count{};
+	for(int i = 0; i < sheet.getWidth(); i++){
+		count += (sheet[i].getType()!=CellType::StringCell?1:0);
+	}
+	return count;
+}

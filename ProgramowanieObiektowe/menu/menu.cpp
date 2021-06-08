@@ -204,24 +204,36 @@ void parametry(Sheet arkusz){
 
 string parametryWiersza(Sheet arkusz, int wiersz){
 	stringstream ss;
-
-	ss << "Wartość maksymalna wiersza: " << maxWiersz(arkusz, wiersz) << endl;
-	ss << "Wartość minimalna wiersza: " << minWiersz(arkusz, wiersz) << endl;
-	int suma = sumaWiersz(arkusz, wiersz);
-	ss << "Suma elementów wiersza: " << suma << endl;
-	ss << "Średnia elementów wiersza: " << (static_cast<double>(suma)/arkusz.getWidth()) << endl;
-
+	int liczbaKolumnObliczalnych = countCalculateableColumns(arkusz);
+	if(liczbaKolumnObliczalnych > 0){
+		ss << "Wartość maksymalna wiersza: " << maxWiersz(arkusz, wiersz) << endl;
+		ss << "Wartość minimalna wiersza: " << minWiersz(arkusz, wiersz) << endl;
+		int suma = sumaWiersz(arkusz, wiersz);
+		ss << "Suma elementów wiersza: " << suma << endl;
+		ss << "Średnia elementów wiersza: " << (static_cast<double>(suma)/liczbaKolumnObliczalnych) << endl;
+	}
+	else{
+		ss << "Brak kolumn obliczalnych do liczenia parametrów!";
+	}
 	return ss.str();
 }
 
 string parametryKolumny(Sheet arkusz, int kolumna){
 	stringstream ss;
 
-	ss << "Wartość maksymalna kolumny: " << maxKolumna(arkusz[kolumna]) << endl;
-	ss << "Wartość minimalna kolumny: " << minKolumna(arkusz[kolumna]) << endl;
-	int suma = sumaKolumna(arkusz[kolumna]);
-	ss << "Suma elementów kolumny: " << suma << endl;
-	ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.getHeight()) << endl;
+	if(arkusz[kolumna].getType()!=CellType::StringCell){
+
+		ss << "Wartość maksymalna kolumny: " << maxKolumna(arkusz[kolumna]) << endl;
+		ss << "Wartość minimalna kolumny: " << minKolumna(arkusz[kolumna]) << endl;
+		int suma = sumaKolumna(arkusz[kolumna]);
+		ss << "Suma elementów kolumny: " << suma << endl;
+		ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.getHeight()) << endl;
+	}
+
+	else{
+		ss << "Kolumna jest tekstowa!" << endl
+		   << "Nie można obliczać parametrów kolumn tekstowych" << endl;
+	}
 
 	return ss.str();
 }
