@@ -73,29 +73,11 @@ void Column::changeType(CellType newType)
 	else{
 		auto newCellArray = generateCellArray(height, newType);
 		for(int i = 0; i < height; i++){
-
-			switch(newType){
-				case CellType::IntCell:{
-					auto oldCell = dynamic_cast<StringCell*>(cellArray[i]);
-					std::string oldValue = (*oldCell).getStringValue();
-					int newValue{};
-					try{
-						newValue = std::stoi(oldValue);
-					}
-					catch(...){}
-					newCellArray[i]->setValue(&newValue);
-					break;
-				}
-				case CellType::StringCell:{
-					auto oldCell = dynamic_cast<IntCell*>(cellArray[i]);
-					std::string newValue = std::to_string(oldCell->getIntValue());
-					newCellArray[i]->setValue(&newValue);
-					break;
-				}
-				default:{
-					break;
-				}
+			auto oldValue = cellArray[i]->getValue();
+			try{
+				newCellArray[i]->setValue(oldValue);
 			}
+			catch(...){}
 		}
 		cellArray = newCellArray;
 		type = newType;

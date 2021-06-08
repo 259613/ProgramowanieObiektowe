@@ -19,14 +19,26 @@ enum class Wyjatki : unsigned int{
 };
 
 /**
- * @brief Wyjątek wyrzucany w przypadku braku dostępu
- * Wyjątek jest wyrzucany gdy użytkownik nie ma dostęplu do pliku lub nieistnieje (odczyt)
+ * @brief Wyjątek wyrzucany w przypadku braku dostępu.
+ * Wyjątek jest wyrzucany gdy użytkownik nie ma dostęplu do pliku lub nieistnieje (odczyt).
  */
 struct BadFileException : public std::exception
 {
 	const char * what() const throw()
 	{
 		return "Brak dostępu do pliku lub nie istnieje";
+	}
+};
+
+/**
+ * @brief Wyjątek wyrzucany w przypadku wprowadzenia wartości nie numerycznej do komórki.
+ * Wyjątek powinien być wyrzucany gdy wprowadzony element nie może być przetworzony na wartość liczbową.
+ */
+struct NotNumericValue : public std::exception
+{
+	const char * what() const throw()
+	{
+		return "Wprowadzona wartość do komórki nie może być przetworzona na wartość liczbową";
 	}
 };
 

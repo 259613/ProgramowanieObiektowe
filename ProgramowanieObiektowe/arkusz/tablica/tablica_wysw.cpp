@@ -9,24 +9,7 @@
 void DisplaySheet(Sheet sheet){
 	for(int i = 0; i < sheet.getHeight(); i++){
 		for(int j = 0; j < sheet.getWidth(); j++){
-			switch(sheet[j].getType()){
-				case CellType::StringCell:{
-					std::cout << dynamic_cast<StringCell&>(sheet[j][i])
-								 .getStringValue()
-							  << "\t";
-					break;
-				}
-				case CellType::IntCell:{
-					std::cout << dynamic_cast<IntCell&>(sheet[j][i])
-								 .getIntValue()
-							  << "\t";
-					break;
-				}
-				default:
-				{
-					break;
-				}
-			}
+			std::cout << sheet[j][i].getValue() << "\t";
 		}
 		std::cout << std::endl;
 	}

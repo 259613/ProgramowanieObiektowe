@@ -16,15 +16,9 @@ public:
 	 */
 	StringCell(std::string value = "?");
 
-	void* getValue();
-	void setValue(void* value);
+	std::string getValue();
+	void setValue(std::string value);
 
-	/**
-	 * @brief getStringValue Metoda od uzyskiwania wartości string
-	 * Metoda służy do bezpośredniego uzyskiwania wartości tekstowej komórki bez potrzeby rzutowania i wyłuskiwania
-	 * @return wartość string komórki
-	 */
-	std::string getStringValue();
 };
 
 #endif

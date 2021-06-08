@@ -1,21 +1,26 @@
 /// @file
 
 #include "intCell.hpp"
-#include <sstream>
+#include "../../error.hpp"
 
 IntCell::IntCell(int value)
 {
 	this->value = value;
 }
 
-void* IntCell::getValue(){
+std::string IntCell::getValue(){
 
-	return &value;
+	return std::to_string(value);
 }
 
-void IntCell::setValue(void* value)
+void IntCell::setValue(std::string value)
 {
-	this->value = *((int*)value);
+	try{
+		this->value = std::stod(value);
+	}
+	catch(...) {
+		throw NotNumericValue();
+	}
 }
 
 int IntCell::getIntValue(){

@@ -114,17 +114,11 @@ int sumaKolumna(Column column)
 
 
 void sortKolumna(Column *column, bool descending){
-	if((*column).getType() == CellType::IntCell){
 
 		std::sort((*column).begin(),(*column).end(),[descending](Cell* x, Cell* y) ->
-				bool{return((*(int*)(x->getValue()))
-							> (*(int*)y->getValue())) ^ !descending; } );
-	}
-	else if((*column).getType() == CellType::StringCell){
-		std::sort((*column).begin(),(*column).end(),[descending](Cell* x, Cell* y) ->
-				bool{return ((*(std::string*)(x->getValue()))
-							 > (*(std::string*)y->getValue())) ^ !descending; } );
-	}
+				bool{return((x->getValue()))
+							> (y->getValue()) ^ !descending; } );
+
 }
 
 int countCalculateableColumns(Sheet sheet)

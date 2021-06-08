@@ -25,37 +25,7 @@ void saveFile(Sheet sheet, std::string fileName)
 		{
 			for(int x = 0; x < sheet.getWidth(); x++)
 			{
-				string value{};
-				switch(sheet[x].getType())
-				{
-
-					case CellType::StringCell:{
-						try{
-							value = dynamic_cast<StringCell&>(sheet[x][y])
-									.getStringValue();
-						}
-						catch(...)
-						{
-							value = "?";
-						}
-						break;
-					}
-
-					case CellType::IntCell:{
-						try{
-							value = to_string(dynamic_cast<IntCell&>(sheet[x][y])
-											  .getIntValue());
-						}
-						catch(...) {
-							value = "0";
-						}
-						break;
-					}
-					default: {
-						value = "0";
-						break;
-					}
-				}
+				string value = sheet[x][y].getValue();
 				file << value << (x < sheet.getWidth()-1 ? ", " : "");
 			}
 			if(y < sheet.getHeight() - 1){
@@ -110,19 +80,9 @@ void loadFile(Sheet* sheet, std::string fileName)
 
 		for(int y = 0; y < height; y++){
 			for(int x = 0; x < width; x++){
-
 				getline(file,tmpText,
 						(x < width-1 ? ',' : '\n' ));
-
-				if(types[x]==CellType::StringCell){
-					newSheet[x][y].setValue(&tmpText);
-				}
-
-				else if(types[x]==CellType::IntCell){
-					tmp = stoi(tmpText);
-					newSheet[x][y].setValue(&tmp);
-				}
-
+				newSheet[x][y].setValue(tmpText);
 			}
 
 		}

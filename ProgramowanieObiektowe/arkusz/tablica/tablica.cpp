@@ -44,29 +44,6 @@ Column& Sheet::operator[](size_t x){
 	return getColumn(x);
 }
 
-//void Sheet::resize(size_t x, size_t y)
-//{
-
-//	if(x < width){
-//		width = x;
-//	}
-//	auto types = new CellType[x];
-//	for(int i = 0; i < x; i ++){
-//		if(i < width){
-//			types[i] = array[i]->getType();
-//		}
-//		else{
-//			types[i] = CellType::IntCell;
-//		}
-//	}
-
-//	auto newArray = createColumnArray(x,y,types);
-//	delete[] types;
-//	delete[] array;
-
-//	array = newArray;
-//}
-
 void Sheet::resize(size_t x, size_t y){
 
 	Column** newArray = new Column*[x];

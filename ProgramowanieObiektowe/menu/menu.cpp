@@ -159,28 +159,20 @@ void wprowadzWartosc(Sheet * arkusz){
 	cout << "Wprowadź wiersz: ";
 	wspY = wprowadzZakres(0, arkusz->getHeight()-1);
 
-	switch(arkusz->getColumn(wspX).getType()){
-		case CellType::IntCell:{
-			cout << "Wprowadź wartość liczbową: ";
-			int x = wprowadzInt();
-			(*arkusz)[wspX][wspY].setValue(&x);
-			break;
-		}
-		case CellType::StringCell:{
-			cout << "Wprowadź wartość tekstową: ";
-
-			string txt{};
-			czyscBufor();
+	string txt{};
+	czyscBufor();
+	while(true){
+		try{
+			cout << "Wprowadź wartość: ";
 			getline(cin,txt);
 
-			(*arkusz)[wspX][wspY].setValue(&txt);
+			(*arkusz)[wspX][wspY].setValue(txt);
 			break;
 		}
-		default:{
-			break;
+		catch(...){
+			cout << "Wymagana jest wartość liczbowa." << endl;
 		}
 	}
-
 }
 
 
