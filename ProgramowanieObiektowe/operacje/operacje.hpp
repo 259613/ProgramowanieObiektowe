@@ -10,10 +10,12 @@
  * 
  * @param [in] sheet Arkusz przeznaczony do obliczania parametru
  * @param [in] row Wiersz względem którego obliczamy parametr
- * @return Zwraca wartość maksymalną wiersza
  *
+ * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
+ *
+ * @return Zwraca wartość maksymalną wiersza
  */
-int maxWiersz(Sheet sheet, size_t row);
+double maxRow(Sheet sheet, size_t row);
 
 /*! \brief Funkcja szukania minimalnej wartości wiersza
  *
@@ -21,10 +23,13 @@ int maxWiersz(Sheet sheet, size_t row);
  * 
  * @param [in] sheet Arkusz przeznaczony do obliczania parametru
  * @param [in] row Wiersz względem którego obliczamy parametr
+ *
+ * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
+ *
  * @return Zwraca wartość najmniejszą wiersza
  *
  */
-int minWiersz(Sheet sheet, size_t row);
+double minRow(Sheet sheet, size_t row);
 
 /*! \brief Funkcja licząca sumę elementów wiersza
  *
@@ -32,15 +37,19 @@ int minWiersz(Sheet sheet, size_t row);
  * 
  * @param [in] sheet Arkusz przeznaczony do obliczania parametru
  * @param [in] row Wiersz względem którego obliczamy parametr
+ *
+ * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
+ *
  * @return Zwraca sumę wszystkich elementów wiersza
  *
  */
-int sumaWiersz(Sheet sheet, size_t row);
+double sumRow(Sheet sheet, size_t row);
 
 /**
  * @brief countCalculateableRow Liczy ilość kolumn obliczalnych
  * Liczy ile jest kolumn które mogą być wykorzystywane przy obliczeniach
  * @param sheet Arkusz którego elementy będą liczone
+ *
  * @return liczba kolumn typów obliczalnych
  */
 int countCalculateableColumns(Sheet sheet);
@@ -50,20 +59,26 @@ int countCalculateableColumns(Sheet sheet);
  * Funkcja przeszukuje całą kolumne celem określenia największej wprowadzonej wartości
  * 
  * @param [in] column Kolumna względem którego obliczamy parametr
+ *
+ * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
+ *
  * @return Zwraca wartość największą kolumny
  *
  */
-int maxKolumna(Column column);
+double maxColumn(Column column);
 
 /*! \brief Funkcja szukania minimalnej wartości kolumny
  *
  * Funkcja przeszukuje całą kolumne celem określenia najmniejszej wprowadzonej wartości
  * 
  * @param [in] column Kolumna względem którego obliczamy parametr
+ *
+ * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
+ *
  * @return Zwraca wartość najmniejszą kolumny
  *
  */
-int minKolumna(Column column);
+double minColumn(Column column);
 
 /*! \brief Funkcja licząca sumę elementów kolumny
  *
@@ -73,7 +88,7 @@ int minKolumna(Column column);
  * @return Zwraca sumę wszystkich elementów kolumny
  *
  */
-int sumaKolumna(Column column);
+double sumColumn(Column column);
 
 /**
  * @brief sortKolumna Sortuje komórki w kolumnie rosnąco lub malejąco
@@ -81,6 +96,6 @@ int sumaKolumna(Column column);
  * @param[in,out] column Kolumna przeznaczona do sortowania
  * @param[in] descending Definiuje czy kolumna będzie sortowana rosnąco lub malejąco
  */
-void sortKolumna(Column *column, bool descending = false);
+void sortColumn(Column *column, bool descending = false);
 
 #endif

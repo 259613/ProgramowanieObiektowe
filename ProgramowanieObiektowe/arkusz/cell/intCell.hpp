@@ -3,8 +3,13 @@
 #ifndef HEADER_GUARD_INTCELL_
 #define HEADER_GUARD_INTCELL_
 #include "cell.hpp"
+#include "numericCell.hpp"
 
-class IntCell: public Cell{
+/**
+ * @brief IntCell komórka z wartością całkowitą
+ * Komórka przyjmująca wartości całkowite
+ */
+class IntCell: public NumericCell{
 	int value;
 public:
 	/**
@@ -38,13 +43,10 @@ public:
 	 */
 	void setValue(std::string value);
 
-	/**
-	 * @brief getIntValue Metoda klasy umożliwiająca bezpośrednie uzyskanie wartości int
-	 * Metoda umożliwia uzyskanie wartości bezpośrednie bez potrzeby parsowania wartości
-	 *
-	 * @return wartość komórki
-	 */
-	int getIntValue();
+
+	double getCalcValue();
+
+
 };
 
 #endif

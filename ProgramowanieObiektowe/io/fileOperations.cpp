@@ -1,10 +1,9 @@
 /// @file
 
 #include <fstream>
-#include "zapisOdczyt.hpp"
 #include <stdexcept>
-#include "../arkusz/komorka/intCell.hpp"
-#include "../arkusz/komorka/stringCell.hpp"
+#include "fileOperations.hpp"
+
 using namespace std;
 
 

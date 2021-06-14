@@ -2,8 +2,6 @@
 
 #include <iostream>
 #include "tablica_wysw.hpp"
-#include "../komorka/intCell.hpp"
-#include "../komorka/stringCell.hpp"
 #include "../../utility/utility.hpp"
 
 void DisplaySheet(Sheet sheet){

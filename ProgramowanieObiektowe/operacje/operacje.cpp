@@ -1,123 +1,100 @@
 ﻿///@file
 #include "operacje.hpp"
-#include "../arkusz/komorka/intCell.hpp"
 #include <algorithm>
-int maxWiersz(Sheet sheet, size_t row)
+double maxRow(Sheet sheet, size_t row)
 {
-	bool flag{};
-	int result{};
-	for(int x = 0; x < sheet.getWidth(); x++){
-		try{
-			auto currentCell = dynamic_cast<IntCell&>(sheet[x][row]);
-			auto currentValue = currentCell.getIntValue();
-			if(currentValue > result || !flag)
-			{
-				result = currentValue;
-				flag = true;
-			}
+	Cell* max = &sheet[0][row];
+
+	for(int x = 1; x < sheet.getWidth(); x++){
+		if(*max < sheet[x][row]){
+			max = &sheet[x][row];
 		}
-		catch(...){}
+	}
+	try {
+		return stod(max->getValue());
+	}
+	catch (...) {
+		throw NotNumericValue();
+	}
+}
+
+
+double minRow(Sheet sheet, size_t row)
+{
+	Cell* min = &sheet[0][row];
+
+	for(int x = 1; x < sheet.getWidth(); x++){
+		if(*min > sheet[x][row]){
+			min = &sheet[x][row];
+		}
+	}
+	try {
+		return stod(min->getValue());
+	}
+	catch (...) {
+		throw NotNumericValue();
+	}
+}
+
+
+double sumRow(Sheet sheet, size_t row)
+{
+	double result{};
+	for(int x = 0; x < sheet.getWidth(); x++){
+		result = sheet[x][row] + result;
 	}
 	return result;
 }
 
-
-int minWiersz(Sheet sheet, size_t row)
+double maxColumn(Column column)
 {
-	bool flag{};
-	int result{};
-	for(int x = 0; x < sheet.getWidth(); x++){
-		try{
-			auto currentCell = dynamic_cast<IntCell&>(sheet[x][row]);
-			auto currentValue = currentCell.getIntValue();
-			if(currentValue < result || !flag)
-			{
-				result = currentValue;
-				flag = true;
-			}
-		}
-		catch(...){}
-	}
-	return result;
-}
-
-
-int sumaWiersz(Sheet sheet, size_t row)
-{
-	int result{};
-	for(int x = 0; x < sheet.getWidth(); x++){
-		try{
-			auto currentCell = dynamic_cast<IntCell&>(sheet[x][row]);
-			auto currentValue = currentCell.getIntValue();
-			if(currentValue > result)
-			{
-				result += currentValue;
-			}
-		}
-		catch(...){}
-	}
-	return result;
-}
-
-int maxKolumna(Column column)
-{
-	bool flag{};
-	int result{};
+	Cell* max = &column[0];
 	for(auto element : column)
 	{
-
-		auto currentCell = dynamic_cast<IntCell*>(element);
-		auto currentValue = currentCell->getIntValue();
-		if(currentValue > result || !flag)
-		{
-			result = currentValue;
-			flag = true;
+		if(*max > *element){
+			max = element;
 		}
 	}
-	return result;
+	try{
+		return stod(max->getValue());
+	}
+	catch(...){
+		throw NotNumericValue();
+	}
 }
 
-int minKolumna(Column column)
+double minColumn(Column column)
 {
-	bool flag{};
-	int result{};
+	Cell* min = &column[0];
 	for(auto element : column)
 	{
-
-		auto currentCell = dynamic_cast<IntCell*>(element);
-		auto currentValue = currentCell->getIntValue();
-		if(currentValue < result || !flag)
-		{
-			result = currentValue;
-			flag = true;
+		if(*min > *element ){
+			min = element;
 		}
 	}
-	return result;
+	try{
+		return stod(min->getValue());
+	}
+	catch(...){
+		throw NotNumericValue();
+	}
 }
 
-int sumaKolumna(Column column)
+double sumColumn(Column column)
 {
-	bool flag{};
-	int result{};
-	for(auto element : column)
-	{
-		auto currentCell = dynamic_cast<IntCell*>(element);
-		auto currentValue = currentCell->getIntValue();
-		if(currentValue > result || !flag)
-		{
-			result = currentValue;
-			flag = true;
-		}
+	double result{};
+	for(auto element : column){
+		result = *element + result;
 	}
 	return result;
 }
 
 
-void sortKolumna(Column *column, bool descending){
+void sortColumn(Column *column, bool descending){
 
-		std::sort((*column).begin(),(*column).end(),[descending](Cell* x, Cell* y) ->
-				bool{return((x->getValue()))
-							> (y->getValue()) ^ !descending; } );
+		std::sort((*column).begin(),
+				  (*column).end(),
+				  [descending](Cell* x, Cell* y) -> bool{return(*x < *y) ^ descending; } );
 
 }
 

@@ -1,15 +1,13 @@
+#ifndef STRINGINTERFACE_HPP
+#define STRINGINTERFACE_HPP
 /// @file
-
-#ifndef HEADER_GUARD_CELL_
-#define HEADER_GUARD_CELL_
-
 #include <string>
 
 /**
- * @brief Interfejs/ klasa czysto wirtualna komórka
- * Interfejs komórka posiadający metody ogólne klas dziedziczących
+ * @brief Intefejs elementów przyjmujących/zwracających elementy string.
  */
-class Cell{
+class StringInterface
+{
 public:
 	/**
 	 * @brief getValue Metoda ogólna od uzyskiwania wartości komórki
@@ -25,7 +23,6 @@ public:
 	 */
 	virtual void setValue(std::string value) = 0;
 
-
 };
 
-#endif
+#endif // STRINGINTERFACE_HPP

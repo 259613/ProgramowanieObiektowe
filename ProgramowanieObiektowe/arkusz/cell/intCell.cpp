@@ -23,6 +23,7 @@ void IntCell::setValue(std::string value)
 	}
 }
 
-int IntCell::getIntValue(){
+double IntCell::getCalcValue(){
 	return value;
 }
+

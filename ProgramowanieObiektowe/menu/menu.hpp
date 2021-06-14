@@ -3,7 +3,6 @@
 
 /// @file
 #include <string>
-#include "../error.hpp"
 #include "../arkusz/tablica/tablica.hpp"
 
 /** 
@@ -28,7 +27,7 @@ void generujMenu();
  *
  * @return Nowy Arkusz do wykorzystywania w programie
  */
-Sheet tworzArkusz();
+Sheet sheetCreator();
 
 /** 
  * \brief Funkcja modyfikująca rozmiar arkusza.
@@ -37,14 +36,14 @@ Sheet tworzArkusz();
  *
  * @param[in,out] arkusz Arkusz przeznaczony do modyfikacji rozmiaru
  */
-void rozszerzArkusz(Sheet * arkusz);
+void expandSheet(Sheet * arkusz);
 
 /** \brief Funkcja wczytywania arkusza
  * Funkcja menu od wczytywania arkusza, ma za zadanie opakowanie funkcji IO wczytajPlik
  * @param [in,out] arkusz Arkusz do którego mogą być wczytane elementy
  *
  */
-void wczytanie(Sheet* arkusz);
+void loadSheet(Sheet* arkusz);
 
 /** \brief Funkcja menu od zapisu
  *
@@ -52,7 +51,7 @@ void wczytanie(Sheet* arkusz);
  *
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji zapisującej do pliku
  */
-void zapis(Sheet arkusz);
+void saveSheet(Sheet arkusz);
 
 
 /** \brief Funkcja menu od wyboru wgzględem czego wyznazcza parametry
@@ -62,7 +61,7 @@ void zapis(Sheet arkusz);
  *
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji wyboru parametrów
  */
-void parametry(Sheet arkusz);
+void sheetParameters(Sheet arkusz);
 
 
 /** \brief Funkcja od wyznaczania parametrów wiersza arkusza
@@ -72,7 +71,7 @@ void parametry(Sheet arkusz);
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji obliczania parametrów
  * @param [in] wiersz Wiersz względem której zostaną obliczone parametry
  */
-std::string parametryWiersza(Sheet arkusz, int wiersz);
+std::string rowParameters(Sheet arkusz, int wiersz);
 
 /** \brief Funkcja od wyznaczania parametrów kolumny arkusza
  *
@@ -81,7 +80,7 @@ std::string parametryWiersza(Sheet arkusz, int wiersz);
  * @param [in] arkusz Przekazywany arkusz do wykorzystania w funkcji obliczania parametrów
  * @param [in] kolumna Kolumna względem której zostaną obliczone parametry
  */
-std::string parametryKolumny(Sheet arkusz, int kolumna);
+std::string columnParameters(Sheet arkusz, int kolumna);
 
 
 /**
@@ -89,19 +88,19 @@ std::string parametryKolumny(Sheet arkusz, int kolumna);
  * Frontend od modyfikacji warotści który w zależności od typu komórki zmieni jej wartość
  * @param arkusz Arkusz którego element będzie modyfikowany
  */
-void wprowadzWartosc(Sheet * arkusz);
+void inputValue(Sheet * arkusz);
 
 /** @brief Funkcja od zmiany typu kolumny
  * Interfejs od metody zmieniającej typ kolumny arkusza
  * @param[in] arkusz Arkusz którego kolumna zostaje zmieniona
  */
-void zmienTyp(Sheet* arkusz);
+void changeType(Sheet* arkusz);
 
 /**
  * @brief Funkcja interfejsu od sortowania kolumny
  * Metoda zawiera interfejs do sortowania kolumny z arkusza
  * @param[in,out] Arkusz którego kolumna będzie sortowana
  */
-void sortowanie(Sheet* arkusz);
+void sort(Sheet* arkusz);
 
 #endif

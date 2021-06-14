@@ -6,7 +6,7 @@
 
 #include "menu.hpp"
 
-#include "../io/zapisOdczyt.hpp"
+#include "../io/fileOperations.hpp"
 #include "../arkusz/tablica/tablica_wysw.hpp"
 #include "../utility/utility.hpp"
 #include "../operacje/operacje.hpp"
@@ -27,7 +27,7 @@ void generujMenu(){
 
 void obslugaMenu(){
 	int opcja{};
-	Sheet arkusz= tworzArkusz();
+	Sheet arkusz= sheetCreator();
 	while(true){
 		generujMenu();
 		opcja = wprowadzZakres(1, 10);
@@ -39,36 +39,36 @@ void obslugaMenu(){
 				break;
 			}
 			case 2: {
-				wprowadzWartosc(&arkusz);
+				inputValue(&arkusz);
 				break;
 			}
 			case 3: {
-				rozszerzArkusz(&arkusz);
+				expandSheet(&arkusz);
 				break;
 			}
 			case 4: {
-				arkusz = tworzArkusz();
+				arkusz = sheetCreator();
 				break;
 			}
 			case 5: {
-				zapis(arkusz);
+				saveSheet(arkusz);
 				break;
 			}
 			case 6: {
-				wczytanie(&arkusz);
+				loadSheet(&arkusz);
 				break;
 			}
 			case 7: {
-				parametry(arkusz);
+				sheetParameters(arkusz);
 				break;
 			}
 			case 8: {
-				zmienTyp(&arkusz);
+				changeType(&arkusz);
 
 				break;
 			}
 			case 9: {
-				sortowanie(&arkusz);
+				sort(&arkusz);
 				break;
 			}
 			case 10: {
@@ -79,7 +79,7 @@ void obslugaMenu(){
 	}
 }
 
-void wczytanie(Sheet* arkusz){
+void loadSheet(Sheet* arkusz){
 
 	czyscBufor();
 	string plik;
@@ -96,7 +96,7 @@ void wczytanie(Sheet* arkusz){
 }
 
 
-void zapis(Sheet arkusz){
+void saveSheet(Sheet arkusz){
 
 	czyscBufor();
 	string plik;
@@ -112,7 +112,7 @@ void zapis(Sheet arkusz){
 	}
 }
 
-Sheet tworzArkusz(){
+Sheet sheetCreator(){
 	while(true){
 
 		try{
@@ -142,7 +142,7 @@ Sheet tworzArkusz(){
 	}
 }
 
-void rozszerzArkusz(Sheet * arkusz){
+void expandSheet(Sheet * arkusz){
 	size_t nowyX, nowyY;
 	cout << "Wprowadź ilość kolumn tablicy: ";
 	nowyX = wprowadzZakres();
@@ -152,7 +152,7 @@ void rozszerzArkusz(Sheet * arkusz){
 	arkusz->resize(nowyX, nowyY);
 }
 
-void wprowadzWartosc(Sheet * arkusz){
+void inputValue(Sheet * arkusz){
 	size_t wspX, wspY;
 	cout << "Wprowadź kolumnę: ";
 	wspX = wprowadzZakres(0, arkusz->getWidth()-1);
@@ -176,7 +176,7 @@ void wprowadzWartosc(Sheet * arkusz){
 }
 
 
-void parametry(Sheet arkusz){
+void sheetParameters(Sheet arkusz){
 	cout << "Podaj względem czego chcesz obliczać parametry: " << endl
 		 << "0. Kolumny" << endl << "1. Wiersze" << endl;
 	int opcja = wprowadzZakres(0,1);
@@ -185,22 +185,22 @@ void parametry(Sheet arkusz){
 
 	if(opcja){
 		cout << "Podaj wiersz względem którego mają zostać podane parametry: ";
-		wynik = parametryWiersza(arkusz, wprowadzZakres(0,arkusz.getHeight()-1));
+		wynik = rowParameters(arkusz, wprowadzZakres(0,arkusz.getHeight()-1));
 	}
 	else{
 		cout << "Podaj kolumnę względem którego mają zostać podane parametry: ";
-		wynik = parametryKolumny(arkusz, wprowadzZakres(0,arkusz.getWidth()-1));
+		wynik = columnParameters(arkusz, wprowadzZakres(0,arkusz.getWidth()-1));
 	}
 	cout << wynik;
 }
 
-string parametryWiersza(Sheet arkusz, int wiersz){
+string rowParameters(Sheet arkusz, int wiersz){
 	stringstream ss;
 	int liczbaKolumnObliczalnych = countCalculateableColumns(arkusz);
 	if(liczbaKolumnObliczalnych > 0){
-		ss << "Wartość maksymalna wiersza: " << maxWiersz(arkusz, wiersz) << endl;
-		ss << "Wartość minimalna wiersza: " << minWiersz(arkusz, wiersz) << endl;
-		int suma = sumaWiersz(arkusz, wiersz);
+		ss << "Wartość maksymalna wiersza: " << maxRow(arkusz, wiersz) << endl;
+		ss << "Wartość minimalna wiersza: " << minRow(arkusz, wiersz) << endl;
+		int suma = sumRow(arkusz, wiersz);
 		ss << "Suma elementów wiersza: " << suma << endl;
 		ss << "Średnia elementów wiersza: " << (static_cast<double>(suma)/liczbaKolumnObliczalnych) << endl;
 	}
@@ -210,14 +210,14 @@ string parametryWiersza(Sheet arkusz, int wiersz){
 	return ss.str();
 }
 
-string parametryKolumny(Sheet arkusz, int kolumna){
+string columnParameters(Sheet arkusz, int kolumna){
 	stringstream ss;
 
 	if(arkusz[kolumna].getType()!=CellType::StringCell){
 
-		ss << "Wartość maksymalna kolumny: " << maxKolumna(arkusz[kolumna]) << endl;
-		ss << "Wartość minimalna kolumny: " << minKolumna(arkusz[kolumna]) << endl;
-		int suma = sumaKolumna(arkusz[kolumna]);
+		ss << "Wartość maksymalna kolumny: " << maxColumn(arkusz[kolumna]) << endl;
+		ss << "Wartość minimalna kolumny: " << minColumn(arkusz[kolumna]) << endl;
+		int suma = sumColumn(arkusz[kolumna]);
 		ss << "Suma elementów kolumny: " << suma << endl;
 		ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.getHeight()) << endl;
 	}
@@ -230,7 +230,7 @@ string parametryKolumny(Sheet arkusz, int kolumna){
 	return ss.str();
 }
 
-void zmienTyp(Sheet* arkusz){
+void changeType(Sheet* arkusz){
 	cout << "Wprowadź kolumne którą chcesz zmienić: " << endl;
 	size_t kol = wprowadzZakres(0, arkusz->getWidth()-1);
 
@@ -240,10 +240,10 @@ void zmienTyp(Sheet* arkusz){
 	(*arkusz)[kol].changeType(static_cast<CellType>(wart));
 }
 
-void sortowanie(Sheet* arkusz){
+void sort(Sheet* arkusz){
 	cout << "Wprowadź kolumnę do posortowania" << endl;
 	int x = wprowadzZakres(0, arkusz->getWidth()-1);
-	cout << "Jak ma kolumna być posortowana \n 0. rosnąco \n 1. Malejąco " << endl;
+	cout << "Jak ma kolumna być posortowana \n 0. Rosnąco \n 1. Malejąco " << endl;
 	bool desc = (wprowadzZakres(0,1)?true:false);
-	sortKolumna(&(*arkusz)[x],desc);
+	sortColumn(&(*arkusz)[x],desc);
 }

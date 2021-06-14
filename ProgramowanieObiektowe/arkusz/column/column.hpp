@@ -3,8 +3,8 @@
 #define HEADER_GUARD_COLUMN_
 
 #include "../../error.hpp"
-#include "../komorka/cell.hpp"
-#include "../komorka/cellType.hpp"
+#include "../cell/cell.hpp"
+#include "../cell/cellType.hpp"
 #include <cstddef>
 
 /**

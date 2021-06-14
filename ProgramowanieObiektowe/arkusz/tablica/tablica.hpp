@@ -6,7 +6,7 @@
 
 #include <cstddef>
 #include "../../error.hpp"
-#include "../kolumna/column.hpp"
+#include "../column/column.hpp"
 
 /**
  * @brief Klasa opisująca Arkusz

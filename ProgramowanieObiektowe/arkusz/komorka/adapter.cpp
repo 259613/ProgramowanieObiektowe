@@ -1,3 +1,0 @@
-///@file
-#include "adapter.hpp"
-

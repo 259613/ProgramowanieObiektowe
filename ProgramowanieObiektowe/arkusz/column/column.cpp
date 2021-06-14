@@ -1,8 +1,8 @@
 ///@file
 
 #include "column.hpp"
-#include "../komorka/intCell.hpp"
-#include "../komorka/stringCell.hpp"
+#include "../cell/intCell.hpp"
+#include "../cell/stringCell.hpp"
 #include <stdexcept>
 
 Cell** Column::generateCellArray(size_t height, CellType type)
