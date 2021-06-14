@@ -25,7 +25,7 @@ void saveFile(Sheet sheet, std::string fileName)
 			for(int x = 0; x < sheet.getWidth(); x++)
 			{
 				string value = sheet[x][y].getValue();
-				file << value << (x < sheet.getWidth()-1 ? ", " : "");
+				file << value << (x < sheet.getWidth()-1 ? "," : "");
 			}
 			if(y < sheet.getHeight() - 1){
 				file << endl;

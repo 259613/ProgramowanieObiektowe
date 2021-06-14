@@ -10,12 +10,7 @@ double maxRow(Sheet sheet, size_t row)
 			max = &sheet[x][row];
 		}
 	}
-	try {
-		return stod(max->getValue());
-	}
-	catch (...) {
-		throw NotNumericValue();
-	}
+	return *max + 0;
 }
 
 
@@ -28,12 +23,7 @@ double minRow(Sheet sheet, size_t row)
 			min = &sheet[x][row];
 		}
 	}
-	try {
-		return stod(min->getValue());
-	}
-	catch (...) {
-		throw NotNumericValue();
-	}
+	return *min + 0;
 }
 
 
@@ -55,12 +45,7 @@ double maxColumn(Column column)
 			max = element;
 		}
 	}
-	try{
-		return stod(max->getValue());
-	}
-	catch(...){
-		throw NotNumericValue();
-	}
+	return *max + 0;
 }
 
 double minColumn(Column column)
@@ -72,12 +57,7 @@ double minColumn(Column column)
 			min = element;
 		}
 	}
-	try{
-		return stod(min->getValue());
-	}
-	catch(...){
-		throw NotNumericValue();
-	}
+	return *min + 0;
 }
 
 double sumColumn(Column column)

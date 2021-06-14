@@ -11,8 +11,6 @@
  * @param [in] sheet Arkusz przeznaczony do obliczania parametru
  * @param [in] row Wiersz względem którego obliczamy parametr
  *
- * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
- *
  * @return Zwraca wartość maksymalną wiersza
  */
 double maxRow(Sheet sheet, size_t row);
@@ -23,8 +21,6 @@ double maxRow(Sheet sheet, size_t row);
  * 
  * @param [in] sheet Arkusz przeznaczony do obliczania parametru
  * @param [in] row Wiersz względem którego obliczamy parametr
- *
- * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
  *
  * @return Zwraca wartość najmniejszą wiersza
  *
@@ -37,8 +33,6 @@ double minRow(Sheet sheet, size_t row);
  * 
  * @param [in] sheet Arkusz przeznaczony do obliczania parametru
  * @param [in] row Wiersz względem którego obliczamy parametr
- *
- * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
  *
  * @return Zwraca sumę wszystkich elementów wiersza
  *
@@ -60,8 +54,6 @@ int countCalculateableColumns(Sheet sheet);
  * 
  * @param [in] column Kolumna względem którego obliczamy parametr
  *
- * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
- *
  * @return Zwraca wartość największą kolumny
  *
  */
@@ -72,8 +64,6 @@ double maxColumn(Column column);
  * Funkcja przeszukuje całą kolumne celem określenia najmniejszej wprowadzonej wartości
  * 
  * @param [in] column Kolumna względem którego obliczamy parametr
- *
- * @throws NotNumericValue W przypadku próby zwrócenia wartości nie numerycznej
  *
  * @return Zwraca wartość najmniejszą kolumny
  *

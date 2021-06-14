@@ -8,23 +8,26 @@ double NumericCell::operator+(double rhs)
 
 bool NumericCell::operator>(Cell& rhs)
 {
-	try{
-		auto &realRhs = dynamic_cast<NumericCell&>(rhs);
-		return getCalcValue() > realRhs.getCalcValue();
-
+	double rhsVal = rhs + 0;
+	if(getCalcValue() > rhsVal)
+	{
+		return true;
 	}
-	catch(...){
-		return false;
+	else if(rhsVal == 0){
+		return rhs < *this;
 	}
+	return false;
 }
 
 bool NumericCell::operator<(Cell& rhs)
 {
-	try{
-		auto &realRhs = dynamic_cast<NumericCell&>(rhs);
-		return getCalcValue() < realRhs.getCalcValue();
+	double rhsVal = rhs + 0;
+	if(getCalcValue() < rhsVal)
+	{
+		return true;
 	}
-	catch(...){
-		return false;
+	else if(rhsVal == 0){
+		return rhs > *this;
 	}
+	return false;
 }

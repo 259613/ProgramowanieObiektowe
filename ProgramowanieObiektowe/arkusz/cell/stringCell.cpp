@@ -1,7 +1,8 @@
 /// @file
 
 #include "stringCell.hpp"
-
+#include <typeinfo>
+#include <typeinfo>
 StringCell::StringCell(std::string value)
 {
 	this->value = value;
@@ -23,24 +24,19 @@ double StringCell::operator+(double rhs){
 
 bool StringCell::operator>(Cell& rhs)
 {
-	try{
-		auto stringRhs = dynamic_cast<StringCell&>(rhs);
-		return value > stringRhs.getValue();
+	if(typeid(rhs) == typeid(StringCell)){
+		return value > rhs.getValue();
 	}
-	catch(...){
-		return true;
-	}
+	return true;
+
 }
 
 bool StringCell::operator<(Cell& rhs)
 {
-	try{
-		auto stringRhs = dynamic_cast<StringCell&>(rhs);
-		return value < stringRhs.getValue();
+	if(typeid(rhs) == typeid(StringCell)){
+		return value < rhs.getValue();
 	}
-	catch(...){
-		return true;
-	}
+	return true;
 }
 
 
