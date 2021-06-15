@@ -11,5 +11,10 @@
  */
 void DisplaySheet(Sheet sheet);
 
-
+/**
+ * @brief columnWidth Metoda od uzyskiwania szerokości tekstu w kolumnie
+ * @param[in] column Kolumna której długość tekstów będzie sprawdzana
+ * @return długość najszerszego tekstu
+ */
+size_t columnWidth(Column column);
 #endif
