@@ -22,20 +22,25 @@ double StringCell::operator+(double rhs){
 	return rhs;
 }
 
+
+bool StringCell::operator>(StringCell& rhs)
+{
+
+	return value > rhs.getValue();
+}
+
+bool StringCell::operator<(StringCell& rhs)
+{
+	return value < rhs.getValue();
+}
+
 bool StringCell::operator>(Cell& rhs)
 {
-	if(typeid(rhs) == typeid(StringCell)){
-		return value > rhs.getValue();
-	}
 	return true;
-
 }
 
 bool StringCell::operator<(Cell& rhs)
 {
-	if(typeid(rhs) == typeid(StringCell)){
-		return value < rhs.getValue();
-	}
 	return true;
 }
 

@@ -215,9 +215,9 @@ string columnParameters(Sheet arkusz, int kolumna){
 
 	if(arkusz[kolumna].getType()!=CellType::StringCell){
 
-		ss << "Wartość maksymalna kolumny: " << maxColumn(arkusz[kolumna]) << endl;
-		ss << "Wartość minimalna kolumny: " << minColumn(arkusz[kolumna]) << endl;
-		int suma = sumColumn(arkusz[kolumna]);
+		ss << "Wartość maksymalna kolumny: " << arkusz[kolumna].max() << endl;
+		ss << "Wartość minimalna kolumny: " << arkusz[kolumna].min() << endl;
+		int suma = arkusz[kolumna].sum();
 		ss << "Suma elementów kolumny: " << suma << endl;
 		ss << "Średnia elementów kolumny: " << (static_cast<double>(suma)/arkusz.getHeight()) << endl;
 	}

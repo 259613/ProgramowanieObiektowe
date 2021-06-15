@@ -113,3 +113,36 @@ Cell& Column::getCell(size_t y){
 Cell& Column::operator[](size_t y){
 	return getCell(y);
 }
+
+double Column::max()
+{
+	Cell* max = cellArray[0];
+	for(auto element : *this)
+	{
+		if(*max > *element){
+			max = element;
+		}
+	}
+	return *max + 0;
+}
+
+double Column::min()
+{
+	Cell* min = cellArray[0];
+	for(auto element : *this)
+	{
+		if(*min > *element ){
+			min = element;
+		}
+	}
+	return *min + 0;
+}
+
+double Column::sum()
+{
+	double result{};
+	for(auto element : *this){
+		result = *element + result;
+	}
+	return result;
+}

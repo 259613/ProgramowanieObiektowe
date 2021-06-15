@@ -13,8 +13,9 @@ class StringCell: public Cell{
 	std::string value;
 public:
 	/**
-	 * @brief StringCell Konstruktor domyślny z opcjonalnym parametrem
-	 * Konstruktor umożliwiający określenie początkowej wartości komórki
+	 * @brief StringCell Konstruktor domyślny z opcjonalnym parametrem.
+	 *
+	 * Konstruktor umożliwiający określenie początkowej wartości komórki.
 	 *
 	 * @param[in] value Wartość początkowa komórki
 	 */
@@ -24,9 +25,10 @@ public:
 	void setValue(std::string value);
 
 	/**
-	 * @brief operator + Operator dodawania zwracający wartość rhs
+	 * @brief operator + Operator dodawania zwracający wartość rhs.
+	 *
 	 * Operator dodawania w przypadku komórki która przyjmuje tylko wartości tekstowe
-	 * zwraca domyślnie wartość wprowadzoną w parametrze operator+
+	 * zwraca domyślnie wartość wprowadzoną w parametrze operator+ .
 	 *
 	 * @param rhs Zwracana wartość
 	 *
@@ -35,28 +37,44 @@ public:
 	double operator+(double rhs);
 
 	/**
-	 * @brief operator > operator porównania
-	 * perator porównania
-	 * Operator porównania czy obecny obiekt jest większy od drugiej komórki,
+	 * @brief operator > Operator porównania dla komórek tekstowych
+	 *
+	 * Operator porównania czy obecny obiekt jest większy od drugiej komórki.
+	 *
+	 * @return Czy obecna komórka jest wyżej leksykalnie
+	 */
+	bool operator>(StringCell&);
+
+	/**
+	 * @brief operator > operator porównania pozostałych typów komórek.
+	 *
 	 * Zwracana wartość w przypadku komórek które nie są klasy StringCell
 	 * uzyskiwana jest wartość true - komórka po prawej stronie będzie dominowała w porównaniu
 	 *
 	 * @param rhs komórka którą porównujemy
 	 *
-	 * @return Czy wartość obecnej komórki jest większa od komórki rhs
+	 * @return Wartość logiczna True
 	 */
 	bool operator>(Cell&);
 
 	/**
-	 * @brief operator < operator porównania
-	 * perator porównania
-	 * Operator porównania czy obecny obiekt jest mniejszy od drugiej komórki,
+	 * @brief operator < Operator porównania dla komórek tekstowych
+	 *
+	 * Operator porównania czy obecny obiekt jest większy od drugiej komórki.
+	 *
+	 * @return Czy obecna komórka jest niżej leksykalnie.
+	 */
+	bool operator<(StringCell&);
+
+	/**
+	 * @brief operator < operator porównania pozostałych typów komórek
+	 *
 	 * Zwracana wartość w przypadku komórek które nie są klasy StringCell
 	 * uzyskiwana jest wartość true - komórka po prawej stronie będzie dominowała w porównaniu
 	 *
 	 * @param rhs komórka którą porównujemy
 	 *
-	 * @return Czy wartość obecnej komórki jest większa od komórki rhs
+	 * @return Wartość logiczna True
 	 */
 	bool operator<(Cell&);
 

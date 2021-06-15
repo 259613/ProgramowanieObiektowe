@@ -108,6 +108,29 @@ public:
 	 */
 	Cell& operator[](size_t y);
 
+	/*! \brief Funkcja szukania maksymalnej wartości kolumny
+	 *
+	 * Funkcja przeszukuje całą kolumne celem określenia największej wprowadzonej wartości
+	 *
+	 * @return Zwraca wartość największą kolumny
+	 */
+	double max();
+
+	/*! \brief Funkcja szukania minimalnej wartości kolumny
+	 *
+	 * Funkcja przeszukuje całą kolumne celem określenia najmniejszej wprowadzonej wartości
+	 *
+	 * @return Zwraca wartość najmniejszą kolumny
+	 */
+	double min();
+
+	/*! \brief Funkcja licząca sumę elementów kolumny
+	 *
+	 * Funkcja zwraca sumę całej kolumny
+	 *
+	 * @return Zwraca sumę wszystkich elementów kolumny
+	 */
+	double sum();
 
 
 };

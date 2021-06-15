@@ -48,38 +48,6 @@ double sumRow(Sheet sheet, size_t row);
  */
 int countCalculateableColumns(Sheet sheet);
 
-/*! \brief Funkcja szukania maksymalnej wartości kolumny
- *
- * Funkcja przeszukuje całą kolumne celem określenia największej wprowadzonej wartości
- * 
- * @param [in] column Kolumna względem którego obliczamy parametr
- *
- * @return Zwraca wartość największą kolumny
- *
- */
-double maxColumn(Column column);
-
-/*! \brief Funkcja szukania minimalnej wartości kolumny
- *
- * Funkcja przeszukuje całą kolumne celem określenia najmniejszej wprowadzonej wartości
- * 
- * @param [in] column Kolumna względem którego obliczamy parametr
- *
- * @return Zwraca wartość najmniejszą kolumny
- *
- */
-double minColumn(Column column);
-
-/*! \brief Funkcja licząca sumę elementów kolumny
- *
- * Funkcja zwraca sumę całej kolumny
- * 
- * @param [in] column Kolumna względem którego obliczamy parametr
- * @return Zwraca sumę wszystkich elementów kolumny
- *
- */
-double sumColumn(Column column);
-
 /**
  * @brief sortKolumna Sortuje komórki w kolumnie rosnąco lub malejąco
  * Sortuje kolumne w zależności od podanego parametru descending

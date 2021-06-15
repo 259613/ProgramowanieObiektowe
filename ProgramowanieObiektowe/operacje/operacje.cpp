@@ -36,38 +36,7 @@ double sumRow(Sheet sheet, size_t row)
 	return result;
 }
 
-double maxColumn(Column column)
-{
-	Cell* max = &column[0];
-	for(auto element : column)
-	{
-		if(*max > *element){
-			max = element;
-		}
-	}
-	return *max + 0;
-}
 
-double minColumn(Column column)
-{
-	Cell* min = &column[0];
-	for(auto element : column)
-	{
-		if(*min > *element ){
-			min = element;
-		}
-	}
-	return *min + 0;
-}
-
-double sumColumn(Column column)
-{
-	double result{};
-	for(auto element : column){
-		result = *element + result;
-	}
-	return result;
-}
 
 
 void sortColumn(Column *column, bool descending){

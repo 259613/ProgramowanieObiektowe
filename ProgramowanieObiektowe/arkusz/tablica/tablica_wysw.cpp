@@ -7,6 +7,7 @@
 
 void DisplaySheet(Sheet sheet){
 	size_t* colSizes = new size_t[sheet.getWidth()];
+	std::cout << "|";
 	for(size_t i = 0; i < sheet.getWidth(); i++){
 		colSizes[i] = columnWidth(sheet[i]);
 		std::cout << std::setw(colSizes[i]) << static_cast<int>(sheet[i].getType()) << " |";
@@ -15,6 +16,7 @@ void DisplaySheet(Sheet sheet){
 	std::cout << std::endl;
 
 	for(int i = 0; i < sheet.getHeight(); i++){
+		std::cout << "|";
 		for(int j = 0; j < sheet.getWidth(); j++){
 			std::cout << std::setw(colSizes[j]) << sheet[j][i].getValue() << " |";
 		}
@@ -30,5 +32,5 @@ size_t columnWidth(Column column){
 			i = x->getValue().size();
 		}
 	}
-	return i;
+	return i+1;
 }
