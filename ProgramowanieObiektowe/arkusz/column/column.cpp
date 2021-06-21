@@ -146,3 +146,14 @@ double Column::sum()
 	}
 	return result;
 }
+
+size_t Column::columnWidth()
+{
+	size_t i {};
+	for(auto x: *this){
+		if(i < x->getValue().size()){
+			i = x->getValue().size();
+		}
+	}
+	return i;
+}

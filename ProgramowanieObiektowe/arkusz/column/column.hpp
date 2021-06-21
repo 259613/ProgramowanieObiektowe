@@ -132,6 +132,12 @@ public:
 	 */
 	double sum();
 
+	/**
+	 * @brief columnWidth Metoda od uzyskiwania szerokości tekstu w kolumnie
+	 * @return długość najszerszego tekstu
+	 */
+	size_t columnWidth();
+
 
 };
 

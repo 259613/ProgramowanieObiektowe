@@ -90,7 +90,7 @@ void loadSheet(Sheet* arkusz){
 		loadFile(arkusz, plik);
 		cout << "Sukces!\n";
 	}
-	catch(exception e){
+	catch(exception& e){
 		cout << e.what() << endl;
 	}
 }
@@ -107,7 +107,7 @@ void saveSheet(Sheet arkusz){
 		saveFile(arkusz, plik);
 		cout << "Sukces!\n";
 	}
-	catch(exception e){
+	catch(exception& e){
 		cout << e.what() <<endl;
 	}
 }

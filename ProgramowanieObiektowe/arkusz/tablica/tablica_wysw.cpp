@@ -6,31 +6,36 @@
 #include "../../utility/utility.hpp"
 
 void DisplaySheet(Sheet sheet){
-	size_t* colSizes = new size_t[sheet.getWidth()];
+
+	size_t width = sheet.getWidth();
+	size_t* colSizes = new size_t[width];
+
 	std::cout << "|";
-	for(size_t i = 0; i < sheet.getWidth(); i++){
-		colSizes[i] = columnWidth(sheet[i]);
-		std::cout << std::setw(colSizes[i]) << static_cast<int>(sheet[i].getType()) << " |";
+	for(size_t i = 0; i < width; i++){
+		colSizes[i] = sheet[i].columnWidth()+1;
+		std::cout << std::setw(colSizes[i])
+				  << static_cast<int>(sheet[i].getType())
+				  << " |";
+	}
+
+	std::cout << std::endl << "+";
+
+	for(size_t i = 0; i < width; i++){
+		std::cout << std::string(colSizes[i]+1,'-')
+				  << "+";
 	}
 
 	std::cout << std::endl;
 
 	for(int i = 0; i < sheet.getHeight(); i++){
 		std::cout << "|";
-		for(int j = 0; j < sheet.getWidth(); j++){
-			std::cout << std::setw(colSizes[j]) << sheet[j][i].getValue() << " |";
+		for(int j = 0; j < width; j++){
+			std::cout << std::setw(colSizes[j])
+					  << sheet[j][i].getValue() << " |";
 		}
-		std::cout << std::endl;
+
+		std::cout << std::endl <<  std::endl;
 	}
 	delete[] colSizes;
 }
 
-size_t columnWidth(Column column){
-	size_t i {};
-	for(auto x: column){
-		if(i < x->getValue().size()){
-			i = x->getValue().size();
-		}
-	}
-	return i+1;
-}
