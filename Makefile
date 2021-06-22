@@ -129,125 +129,149 @@ ProgramowanieObiektowe.out/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/build
 .PHONY : ProgramowanieObiektowe.out/fast
 
-ProgramowanieObiektowe/arkusz/kolumna/column.o: ProgramowanieObiektowe/arkusz/kolumna/column.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/kolumna/column.o
+ProgramowanieObiektowe/CursesUI/controller.o: ProgramowanieObiektowe/CursesUI/controller.cpp.o
+.PHONY : ProgramowanieObiektowe/CursesUI/controller.o
 
 # target to build an object file
-ProgramowanieObiektowe/arkusz/kolumna/column.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/kolumna/column.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/kolumna/column.cpp.o
+ProgramowanieObiektowe/CursesUI/controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/CursesUI/controller.cpp.o
+.PHONY : ProgramowanieObiektowe/CursesUI/controller.cpp.o
 
-ProgramowanieObiektowe/arkusz/kolumna/column.i: ProgramowanieObiektowe/arkusz/kolumna/column.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/kolumna/column.i
+ProgramowanieObiektowe/CursesUI/controller.i: ProgramowanieObiektowe/CursesUI/controller.cpp.i
+.PHONY : ProgramowanieObiektowe/CursesUI/controller.i
 
 # target to preprocess a source file
-ProgramowanieObiektowe/arkusz/kolumna/column.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/kolumna/column.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/kolumna/column.cpp.i
+ProgramowanieObiektowe/CursesUI/controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/CursesUI/controller.cpp.i
+.PHONY : ProgramowanieObiektowe/CursesUI/controller.cpp.i
 
-ProgramowanieObiektowe/arkusz/kolumna/column.s: ProgramowanieObiektowe/arkusz/kolumna/column.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/kolumna/column.s
+ProgramowanieObiektowe/CursesUI/controller.s: ProgramowanieObiektowe/CursesUI/controller.cpp.s
+.PHONY : ProgramowanieObiektowe/CursesUI/controller.s
 
 # target to generate assembly for a file
-ProgramowanieObiektowe/arkusz/kolumna/column.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/kolumna/column.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/kolumna/column.cpp.s
+ProgramowanieObiektowe/CursesUI/controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/CursesUI/controller.cpp.s
+.PHONY : ProgramowanieObiektowe/CursesUI/controller.cpp.s
 
-ProgramowanieObiektowe/arkusz/komorka/adapter.o: ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/adapter.o
+ProgramowanieObiektowe/CursesUI/display.o: ProgramowanieObiektowe/CursesUI/display.cpp.o
+.PHONY : ProgramowanieObiektowe/CursesUI/display.o
 
 # target to build an object file
-ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.o
+ProgramowanieObiektowe/CursesUI/display.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/CursesUI/display.cpp.o
+.PHONY : ProgramowanieObiektowe/CursesUI/display.cpp.o
 
-ProgramowanieObiektowe/arkusz/komorka/adapter.i: ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/adapter.i
+ProgramowanieObiektowe/CursesUI/display.i: ProgramowanieObiektowe/CursesUI/display.cpp.i
+.PHONY : ProgramowanieObiektowe/CursesUI/display.i
 
 # target to preprocess a source file
-ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.i
+ProgramowanieObiektowe/CursesUI/display.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/CursesUI/display.cpp.i
+.PHONY : ProgramowanieObiektowe/CursesUI/display.cpp.i
 
-ProgramowanieObiektowe/arkusz/komorka/adapter.s: ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/adapter.s
+ProgramowanieObiektowe/CursesUI/display.s: ProgramowanieObiektowe/CursesUI/display.cpp.s
+.PHONY : ProgramowanieObiektowe/CursesUI/display.s
 
 # target to generate assembly for a file
-ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/adapter.cpp.s
+ProgramowanieObiektowe/CursesUI/display.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/CursesUI/display.cpp.s
+.PHONY : ProgramowanieObiektowe/CursesUI/display.cpp.s
 
-ProgramowanieObiektowe/arkusz/komorka/cell.o: ProgramowanieObiektowe/arkusz/komorka/cell.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/cell.o
+ProgramowanieObiektowe/arkusz/cell/intCell.o: ProgramowanieObiektowe/arkusz/cell/intCell.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/cell/intCell.o
 
 # target to build an object file
-ProgramowanieObiektowe/arkusz/komorka/cell.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/cell.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/cell.cpp.o
+ProgramowanieObiektowe/arkusz/cell/intCell.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/intCell.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/cell/intCell.cpp.o
 
-ProgramowanieObiektowe/arkusz/komorka/cell.i: ProgramowanieObiektowe/arkusz/komorka/cell.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/cell.i
+ProgramowanieObiektowe/arkusz/cell/intCell.i: ProgramowanieObiektowe/arkusz/cell/intCell.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/cell/intCell.i
 
 # target to preprocess a source file
-ProgramowanieObiektowe/arkusz/komorka/cell.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/cell.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/cell.cpp.i
+ProgramowanieObiektowe/arkusz/cell/intCell.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/intCell.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/cell/intCell.cpp.i
 
-ProgramowanieObiektowe/arkusz/komorka/cell.s: ProgramowanieObiektowe/arkusz/komorka/cell.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/cell.s
+ProgramowanieObiektowe/arkusz/cell/intCell.s: ProgramowanieObiektowe/arkusz/cell/intCell.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/cell/intCell.s
 
 # target to generate assembly for a file
-ProgramowanieObiektowe/arkusz/komorka/cell.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/cell.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/cell.cpp.s
+ProgramowanieObiektowe/arkusz/cell/intCell.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/intCell.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/cell/intCell.cpp.s
 
-ProgramowanieObiektowe/arkusz/komorka/intCell.o: ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/intCell.o
+ProgramowanieObiektowe/arkusz/cell/numericCell.o: ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/cell/numericCell.o
 
 # target to build an object file
-ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.o
+ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.o
 
-ProgramowanieObiektowe/arkusz/komorka/intCell.i: ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/intCell.i
+ProgramowanieObiektowe/arkusz/cell/numericCell.i: ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/cell/numericCell.i
 
 # target to preprocess a source file
-ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.i
+ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.i
 
-ProgramowanieObiektowe/arkusz/komorka/intCell.s: ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/intCell.s
+ProgramowanieObiektowe/arkusz/cell/numericCell.s: ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/cell/numericCell.s
 
 # target to generate assembly for a file
-ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/intCell.cpp.s
+ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/cell/numericCell.cpp.s
 
-ProgramowanieObiektowe/arkusz/komorka/stringCell.o: ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/stringCell.o
+ProgramowanieObiektowe/arkusz/cell/stringCell.o: ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/cell/stringCell.o
 
 # target to build an object file
-ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.o
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.o
+ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.o
 
-ProgramowanieObiektowe/arkusz/komorka/stringCell.i: ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/stringCell.i
+ProgramowanieObiektowe/arkusz/cell/stringCell.i: ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/cell/stringCell.i
 
 # target to preprocess a source file
-ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.i
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.i
+ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.i
 
-ProgramowanieObiektowe/arkusz/komorka/stringCell.s: ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/stringCell.s
+ProgramowanieObiektowe/arkusz/cell/stringCell.s: ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/cell/stringCell.s
 
 # target to generate assembly for a file
-ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.s
-.PHONY : ProgramowanieObiektowe/arkusz/komorka/stringCell.cpp.s
+ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/cell/stringCell.cpp.s
+
+ProgramowanieObiektowe/arkusz/column/column.o: ProgramowanieObiektowe/arkusz/column/column.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/column/column.o
+
+# target to build an object file
+ProgramowanieObiektowe/arkusz/column/column.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/column/column.cpp.o
+.PHONY : ProgramowanieObiektowe/arkusz/column/column.cpp.o
+
+ProgramowanieObiektowe/arkusz/column/column.i: ProgramowanieObiektowe/arkusz/column/column.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/column/column.i
+
+# target to preprocess a source file
+ProgramowanieObiektowe/arkusz/column/column.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/column/column.cpp.i
+.PHONY : ProgramowanieObiektowe/arkusz/column/column.cpp.i
+
+ProgramowanieObiektowe/arkusz/column/column.s: ProgramowanieObiektowe/arkusz/column/column.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/column/column.s
+
+# target to generate assembly for a file
+ProgramowanieObiektowe/arkusz/column/column.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/column/column.cpp.s
+.PHONY : ProgramowanieObiektowe/arkusz/column/column.cpp.s
 
 ProgramowanieObiektowe/arkusz/tablica/tablica.o: ProgramowanieObiektowe/arkusz/tablica/tablica.cpp.o
 .PHONY : ProgramowanieObiektowe/arkusz/tablica/tablica.o
@@ -297,29 +321,29 @@ ProgramowanieObiektowe/arkusz/tablica/tablica_wysw.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/arkusz/tablica/tablica_wysw.cpp.s
 .PHONY : ProgramowanieObiektowe/arkusz/tablica/tablica_wysw.cpp.s
 
-ProgramowanieObiektowe/io/zapisOdczyt.o: ProgramowanieObiektowe/io/zapisOdczyt.cpp.o
-.PHONY : ProgramowanieObiektowe/io/zapisOdczyt.o
+ProgramowanieObiektowe/io/fileOperations.o: ProgramowanieObiektowe/io/fileOperations.cpp.o
+.PHONY : ProgramowanieObiektowe/io/fileOperations.o
 
 # target to build an object file
-ProgramowanieObiektowe/io/zapisOdczyt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/io/zapisOdczyt.cpp.o
-.PHONY : ProgramowanieObiektowe/io/zapisOdczyt.cpp.o
+ProgramowanieObiektowe/io/fileOperations.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/io/fileOperations.cpp.o
+.PHONY : ProgramowanieObiektowe/io/fileOperations.cpp.o
 
-ProgramowanieObiektowe/io/zapisOdczyt.i: ProgramowanieObiektowe/io/zapisOdczyt.cpp.i
-.PHONY : ProgramowanieObiektowe/io/zapisOdczyt.i
+ProgramowanieObiektowe/io/fileOperations.i: ProgramowanieObiektowe/io/fileOperations.cpp.i
+.PHONY : ProgramowanieObiektowe/io/fileOperations.i
 
 # target to preprocess a source file
-ProgramowanieObiektowe/io/zapisOdczyt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/io/zapisOdczyt.cpp.i
-.PHONY : ProgramowanieObiektowe/io/zapisOdczyt.cpp.i
+ProgramowanieObiektowe/io/fileOperations.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/io/fileOperations.cpp.i
+.PHONY : ProgramowanieObiektowe/io/fileOperations.cpp.i
 
-ProgramowanieObiektowe/io/zapisOdczyt.s: ProgramowanieObiektowe/io/zapisOdczyt.cpp.s
-.PHONY : ProgramowanieObiektowe/io/zapisOdczyt.s
+ProgramowanieObiektowe/io/fileOperations.s: ProgramowanieObiektowe/io/fileOperations.cpp.s
+.PHONY : ProgramowanieObiektowe/io/fileOperations.s
 
 # target to generate assembly for a file
-ProgramowanieObiektowe/io/zapisOdczyt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/io/zapisOdczyt.cpp.s
-.PHONY : ProgramowanieObiektowe/io/zapisOdczyt.cpp.s
+ProgramowanieObiektowe/io/fileOperations.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/io/fileOperations.cpp.s
+.PHONY : ProgramowanieObiektowe/io/fileOperations.cpp.s
 
 ProgramowanieObiektowe/main.o: ProgramowanieObiektowe/main.cpp.o
 .PHONY : ProgramowanieObiektowe/main.o
@@ -393,6 +417,30 @@ ProgramowanieObiektowe/operacje/operacje.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/operacje/operacje.cpp.s
 .PHONY : ProgramowanieObiektowe/operacje/operacje.cpp.s
 
+ProgramowanieObiektowe/utility/list.o: ProgramowanieObiektowe/utility/list.cpp.o
+.PHONY : ProgramowanieObiektowe/utility/list.o
+
+# target to build an object file
+ProgramowanieObiektowe/utility/list.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/utility/list.cpp.o
+.PHONY : ProgramowanieObiektowe/utility/list.cpp.o
+
+ProgramowanieObiektowe/utility/list.i: ProgramowanieObiektowe/utility/list.cpp.i
+.PHONY : ProgramowanieObiektowe/utility/list.i
+
+# target to preprocess a source file
+ProgramowanieObiektowe/utility/list.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/utility/list.cpp.i
+.PHONY : ProgramowanieObiektowe/utility/list.cpp.i
+
+ProgramowanieObiektowe/utility/list.s: ProgramowanieObiektowe/utility/list.cpp.s
+.PHONY : ProgramowanieObiektowe/utility/list.s
+
+# target to generate assembly for a file
+ProgramowanieObiektowe/utility/list.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProgramowanieObiektowe.out.dir/build.make CMakeFiles/ProgramowanieObiektowe.out.dir/ProgramowanieObiektowe/utility/list.cpp.s
+.PHONY : ProgramowanieObiektowe/utility/list.cpp.s
+
 ProgramowanieObiektowe/utility/utility.o: ProgramowanieObiektowe/utility/utility.cpp.o
 .PHONY : ProgramowanieObiektowe/utility/utility.o
 
@@ -426,30 +474,33 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ProgramowanieObiektowe.out"
-	@echo "... ProgramowanieObiektowe/arkusz/kolumna/column.o"
-	@echo "... ProgramowanieObiektowe/arkusz/kolumna/column.i"
-	@echo "... ProgramowanieObiektowe/arkusz/kolumna/column.s"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/adapter.o"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/adapter.i"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/adapter.s"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/cell.o"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/cell.i"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/cell.s"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/intCell.o"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/intCell.i"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/intCell.s"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/stringCell.o"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/stringCell.i"
-	@echo "... ProgramowanieObiektowe/arkusz/komorka/stringCell.s"
+	@echo "... ProgramowanieObiektowe/CursesUI/controller.o"
+	@echo "... ProgramowanieObiektowe/CursesUI/controller.i"
+	@echo "... ProgramowanieObiektowe/CursesUI/controller.s"
+	@echo "... ProgramowanieObiektowe/CursesUI/display.o"
+	@echo "... ProgramowanieObiektowe/CursesUI/display.i"
+	@echo "... ProgramowanieObiektowe/CursesUI/display.s"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/intCell.o"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/intCell.i"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/intCell.s"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/numericCell.o"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/numericCell.i"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/numericCell.s"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/stringCell.o"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/stringCell.i"
+	@echo "... ProgramowanieObiektowe/arkusz/cell/stringCell.s"
+	@echo "... ProgramowanieObiektowe/arkusz/column/column.o"
+	@echo "... ProgramowanieObiektowe/arkusz/column/column.i"
+	@echo "... ProgramowanieObiektowe/arkusz/column/column.s"
 	@echo "... ProgramowanieObiektowe/arkusz/tablica/tablica.o"
 	@echo "... ProgramowanieObiektowe/arkusz/tablica/tablica.i"
 	@echo "... ProgramowanieObiektowe/arkusz/tablica/tablica.s"
 	@echo "... ProgramowanieObiektowe/arkusz/tablica/tablica_wysw.o"
 	@echo "... ProgramowanieObiektowe/arkusz/tablica/tablica_wysw.i"
 	@echo "... ProgramowanieObiektowe/arkusz/tablica/tablica_wysw.s"
-	@echo "... ProgramowanieObiektowe/io/zapisOdczyt.o"
-	@echo "... ProgramowanieObiektowe/io/zapisOdczyt.i"
-	@echo "... ProgramowanieObiektowe/io/zapisOdczyt.s"
+	@echo "... ProgramowanieObiektowe/io/fileOperations.o"
+	@echo "... ProgramowanieObiektowe/io/fileOperations.i"
+	@echo "... ProgramowanieObiektowe/io/fileOperations.s"
 	@echo "... ProgramowanieObiektowe/main.o"
 	@echo "... ProgramowanieObiektowe/main.i"
 	@echo "... ProgramowanieObiektowe/main.s"
@@ -459,6 +510,9 @@ help:
 	@echo "... ProgramowanieObiektowe/operacje/operacje.o"
 	@echo "... ProgramowanieObiektowe/operacje/operacje.i"
 	@echo "... ProgramowanieObiektowe/operacje/operacje.s"
+	@echo "... ProgramowanieObiektowe/utility/list.o"
+	@echo "... ProgramowanieObiektowe/utility/list.i"
+	@echo "... ProgramowanieObiektowe/utility/list.s"
 	@echo "... ProgramowanieObiektowe/utility/utility.o"
 	@echo "... ProgramowanieObiektowe/utility/utility.i"
 	@echo "... ProgramowanieObiektowe/utility/utility.s"

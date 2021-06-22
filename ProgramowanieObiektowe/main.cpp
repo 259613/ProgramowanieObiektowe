@@ -1,8 +1,8 @@
 /// @file
 
-#include "menu/menu.hpp"
+#include "CursesUI/controller.hpp"
 
 
 int main(){
-	obslugaMenu();
+	menu();
 }
